@@ -1,6 +1,6 @@
 import React from 'react';
-import Registrierung from './pages/Registrierung/Registrierung';
-import Header from './components/header';
+import Registrierung from './Registrierung/Registrierung';
+import Header from './header/header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {

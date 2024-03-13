@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Input, Button } from '@mantine/core';
-import { db } from '../../utils/firebase';
+import { db } from '../utils/firebase';
 import { collection, addDoc, updateDoc, doc, getDocs, query, where } from 'firebase/firestore';
 import './Registrierung.css';
 
