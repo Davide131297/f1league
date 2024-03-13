@@ -3,30 +3,31 @@ import { Input, Button } from '@mantine/core';
 import { db } from '../utils/firebase';
 import { collection, addDoc, updateDoc, doc, getDocs, query, where } from 'firebase/firestore';
 import './Registrierung.css';
+import { SHA256 } from 'crypto-js';
 
 function Registrierung() {
 
   // Zustand für die Formulardaten
-  const [vorname, setVorname] = useState('');
-  const [nachname, setNachname] = useState('');
-  const [geburtstag, setGeburtstag] = useState('');
+  const [spielerID, setSpielerID] = useState('');
+  const [passwort, setPasswort] = useState('');
 
   // Funktion zum Speichern der Person in der Kollektion 'personen'
   const addPerson = async (event) => {
     event.preventDefault();
 
+    const hashedPassword = SHA256(passwort).toString();
+
     const personData = {
-      vorname,
-      nachname,
-      geburtstag
+      spielerID,
+      passwort: hashedPassword
     };
 
     try {
-      // Überprüfen, ob der Vorname bereits existiert
-      const q = query(collection(db, "personen"), where("vorname", "==", vorname));
+      // Überprüfen, ob die SpielerID bereits existiert
+      const q = query(collection(db, "personen"), where("spielerID", "==", spielerID));
       const querySnapshot = await getDocs(q);
       if (!querySnapshot.empty) {
-        alert("Eine Person mit diesem Vornamen existiert bereits.");
+        alert("Eine Person mit dieser SpielerID existiert bereits.");
         return;
       }
 
@@ -46,19 +47,15 @@ function Registrierung() {
     <div className="App">
       <form onSubmit={addPerson}>
         <Input 
-          placeholder="Vorname" 
-          value={vorname} 
-          onChange={(event) => setVorname(event.currentTarget.value)} 
+          placeholder="SpielerID" 
+          value={spielerID} 
+          onChange={(event) => setSpielerID(event.currentTarget.value)} 
         />
         <Input 
-          placeholder="Nachname" 
-          value={nachname} 
-          onChange={(event) => setNachname(event.currentTarget.value)} 
-        />
-        <Input 
-          placeholder="Geburtstag (DD.MM.YYYY)" 
-          value={geburtstag} 
-          onChange={(event) => setGeburtstag(event.currentTarget.value)} 
+          placeholder="Passwort" 
+          type="password"
+          value={passwort} 
+          onChange={(event) => setPasswort(event.currentTarget.value)} 
         />
         <Button type="submit">Senden</Button>
       </form>
