@@ -13,6 +13,18 @@ const Header = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [showLogout, setShowLogout] = useState(false);
+    const handleLogoutClose = () => setShowLogout(false);
+    const handleLogoutShow = () => setShowLogout(true);
+    
+    const handleLogout = () => {
+        const confirmLogout = window.confirm("Möchtest du dich wirklich ausloggen?");
+        if (confirmLogout) {
+            document.cookie = "userID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            setIsAuthenticated(false);
+        }
+    };
 
     return (
         <>
@@ -29,7 +41,11 @@ const Header = () => {
                         <span className="title">Int-Legendz F1 Liga</span>
                     </Navbar.Brand>
                     <Navbar.Collapse className="justify-content-end">
-                        <Button onClick={handleShow} variant="light">Login</Button>
+                        {isAuthenticated === false ? 
+                            <Button onClick={handleShow} variant="light">Login</Button> 
+                            : 
+                            <Button onClick={handleLogout} variant="light">Logout</Button>
+                        }
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
@@ -40,7 +56,7 @@ const Header = () => {
                     <CloseButton onClick={handleClose} className="closeButton"/>
                 </Modal.Header>
                 <Modal.Body className="d-flex justify-content-center">
-                    <Registrierung setShow={setShow}/>
+                    <Registrierung setShow={setShow} setIsAuthenticated={setIsAuthenticated}/>
                 </Modal.Body>
             </Modal>
         </>

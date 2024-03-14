@@ -7,7 +7,7 @@ import { SHA256 } from 'crypto-js';
 import Form from 'react-bootstrap/Form';
 
 
-function Registrierung({ setShow }) {
+function Registrierung({ setShow, setIsAuthenticated }) {
 
   // Zustand für die Formulardaten
   const [spielerID, setSpielerID] = useState('');
@@ -99,6 +99,7 @@ function Registrierung({ setShow }) {
           let expires = "; expires=" + date.toUTCString();
           document.cookie = "userID=" + personData.id + expires + "; path=/";
           setShow(false);
+          setIsAuthenticated(true);
         } else {
           alert("Falsches Passwort!");
         }
