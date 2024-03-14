@@ -43,6 +43,29 @@ function Registrierung() {
     }
   };
 
+  // Funktion zum Überprüfen der Anmeldeinformationen
+  const checkCredentials = async () => {
+  const hashedPassword = SHA256(passwort).toString();
+
+    try {
+      // Überprüfen, ob die SpielerID existiert und das Passwort korrekt ist
+      const q = query(collection(db, "personen"), where("spielerID", "==", spielerID));
+      const querySnapshot = await getDocs(q);
+      if (!querySnapshot.empty) {
+        const personData = querySnapshot.docs[0].data();
+        if (personData.passwort === hashedPassword) {
+          alert("Erfolgreich eingeloggt!");
+        } else {
+          alert("Falsches Passwort!");
+        }
+      } else {
+        alert("Keine Person mit dieser SpielerID gefunden.");
+      }
+    } catch (e) {
+      console.error("Fehler beim Überprüfen der Anmeldeinformationen: ", e);
+    }
+  };
+
   return (
     <div className="App">
       <form onSubmit={addPerson}>
@@ -57,7 +80,8 @@ function Registrierung() {
           value={passwort} 
           onChange={(event) => setPasswort(event.currentTarget.value)} 
         />
-        <Button type="submit">Senden</Button>
+        <Button type="submit">Registrieren</Button>
+        <Button type="button" onClick={checkCredentials}>Login</Button>
       </form>
     </div>
   );
