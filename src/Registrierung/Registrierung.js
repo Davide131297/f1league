@@ -27,32 +27,6 @@ function Registrierung({ setShow, setIsAuthenticated }) {
     "Haas"
   ];
 
-  let strecken = {
-    bahrain: [{ punkte: null }],
-    saudiarabien: [{ punkte: null }],
-    australien: [{ punkte: null }],
-    aserbaidschan: [{ punkte: null }],
-    miami: [{ punkte: null }],
-    italien: [{ punkte: null }],
-    monaco: [{ punkte: null }],
-    spanien: [{ punkte: null }],
-    kanada: [{ punkte: null }],
-    österreich: [{ punkte: null }],
-    england: [{ punkte: null }],
-    ungarn: [{ punkte: null }],
-    belgien: [{ punkte: null }],
-    niederlande: [{ punkte: null }],
-    singapur: [{ punkte: null }],
-    japan: [{ punkte: null }],
-    katar: [{ punkte: null }],
-    usa: [{ punkte: null }],
-    mexiko: [{ punkte: null }],
-    brasilien: [{ punkte: null }],
-    lasvegas: [{ punkte: null }],
-    abudhabi: [{ punkte: null }]
-  };
-
-
   // Funktion zum Speichern der Person in der Kollektion 'personen'
   const addPerson = async (event) => {
     event.preventDefault();
@@ -69,7 +43,6 @@ function Registrierung({ setShow, setIsAuthenticated }) {
       spielerID,
       passwort: hashedPassword,
       team,
-      strecken
     };
 
     try {
