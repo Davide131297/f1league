@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/f1league/static/css/main.c4f1dfc9.css",
+    "main.js": "/f1league/static/js/main.502bcf20.js",
+    "static/js/453.916ec20e.chunk.js": "/f1league/static/js/453.916ec20e.chunk.js",
+    "static/media/LigaLogo.jpg": "/f1league/static/media/LigaLogo.49e788c274b2fe2cdee7.jpg",
+    "index.html": "/f1league/index.html",
+    "main.c4f1dfc9.css.map": "/f1league/static/css/main.c4f1dfc9.css.map",
+    "main.502bcf20.js.map": "/f1league/static/js/main.502bcf20.js.map",
+    "453.916ec20e.chunk.js.map": "/f1league/static/js/453.916ec20e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c4f1dfc9.css",
+    "static/js/main.502bcf20.js"
+  ]
+}
