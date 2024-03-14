@@ -118,12 +118,126 @@ function TeilnehmerTabelle() {
                             <td>{person.spielerID}</td> {/* Fahrer */}
                             {/* Rest der Zellen */}
                             <td>{person.team}</td> {/* Konstrukteur */}
-                            <td>
+                            <td> {/* Bahrain */}
                                 <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
-                            </td> {/* Bahrain */}
-                            {/* ... */}
+                            </td>
+                            <td> {/* SaudiArabien */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* Australien */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* Aserbaidschan */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* USA */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* Italien */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* Monaco */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* Spanien */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* Kanada */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* Österreich */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* England */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* Ungarn */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* Belgien */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* Niederlande */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* Singapur */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* Japan */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* Katar */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* Mexiko */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* Brasilien */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* AbuDhabi */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
                             <td></td> {/* Punkte */}
                         </tr>
                         ))}
