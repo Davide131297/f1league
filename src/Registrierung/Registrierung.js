@@ -10,14 +10,15 @@ function Registrierung() {
   // Zustand für die Formulardaten
   const [spielerID, setSpielerID] = useState('');
   const [passwort, setPasswort] = useState('');
+  const [team, setTeam] = useState('');
 
   // Funktion zum Speichern der Person in der Kollektion 'personen'
   const addPerson = async (event) => {
     event.preventDefault();
 
     // Überprüfen, ob sowohl SpielerID als auch Passwort eingegeben wurden
-    if (!spielerID || !passwort) {
-      alert('Bitte geben Sie sowohl SpielerID als auch Passwort ein.');
+    if (!spielerID || !passwort || !team) {
+      alert('Bitte geben Sie SpielerID, Passwort und Team ein.');
       return;
     }
 
@@ -25,7 +26,8 @@ function Registrierung() {
 
     const personData = {
       spielerID,
-      passwort: hashedPassword
+      passwort: hashedPassword,
+      team
     };
 
     try {
@@ -90,6 +92,11 @@ function Registrierung() {
           type="password"
           value={passwort} 
           onChange={(event) => setPasswort(event.currentTarget.value)} 
+        />
+        <Input 
+          placeholder="Team"
+          value={team} 
+          onChange={(event) => setTeam(event.currentTarget.value)} 
         />
         <div className='buttons'>
           <Button type="submit">Registrieren</Button>
