@@ -3,6 +3,7 @@ import { db } from './../utils/firebase';
 import { collection, onSnapshot } from 'firebase/firestore';
 import Table from 'react-bootstrap/Table';
 import './TeilnehmerTabelle.css';
+import { ScrollArea } from '@mantine/core';
 // Flaggen
 import Bahrain from './../Flaggen/bahrain.png';
 import SaudiArabien from './../Flaggen/saudiarabien.png';
@@ -47,49 +48,51 @@ function TeilnehmerTabelle() {
 
     return (
         <div className='table-container'>
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>Pos</th>
-                        <th>Fahrer</th>
-                        <th>Konstrukteur</th>
-                        <th><img src={Bahrain} alt="Bahrain" className='img-size'/></th>
-                        <th><img src={SaudiArabien} alt="SaudiArabien" className='img-size'/></th>
-                        <th><img src={Australien} alt="Australien" className='img-size'/></th>
-                        <th><img src={Aserbaidschan} alt="Aserbeidschan" className='img-size'/></th>
-                        <th><img src={USA} alt="USA" className='img-size'/></th>
-                        <th><img src={Italien} alt="Italien" className='img-size'/></th>
-                        <th><img src={Monaco} alt="Monaco" className='img-size'/></th>
-                        <th><img src={Spanien} alt="Spanien" className='img-size'/></th>
-                        <th><img src={Kanada} alt="Kanada" className='img-size'/></th>
-                        <th><img src={Österreich} alt="Österreich" className='img-size'/></th>
-                        <th><img src={England} alt="England" className='img-size'/></th>
-                        <th><img src={Ungarn} alt="Ungarn" className='img-size'/></th>
-                        <th><img src={Belgien} alt="Belgien" className='img-size'/></th>
-                        <th><img src={Niederlande} alt="Niederlande" className='img-size'/></th>
-                        <th><img src={Singapur} alt="Singapur" className='img-size'/></th>
-                        <th><img src={Japan} alt="Japan" className='img-size'/></th>
-                        <th><img src={Katar} alt="Katar" className='img-size'/></th>
-                        <th><img src={Mexiko} alt="Mexiko" className='img-size'/></th>
-                        <th><img src={Brasilien} alt="Brasilien" className='img-size'/></th>
-                        <th><img src={AbuDhabi} alt="AbuDhabi" className='img-size'/></th>
-                        <th>Gesamtpunkte</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {personen.map((person, index) => (
-                    <tr key={index}>
-                        <td></td> {/* Pos */}
-                        <td>{person.spielerID}</td> {/* Fahrer */}
-                        {/* Rest der Zellen */}
-                        <td>{person.team}</td> {/* Konstrukteur */}
-                        <td></td> {/* Bahrain */}
-                        {/* ... */}
-                        <td></td> {/* Punkte */}
-                    </tr>
-                    ))}
-                </tbody>
-            </Table>
+            <ScrollArea type='never' className='scrollarea'>
+                <Table striped bordered hover>
+                    <thead className='thead-sticky'>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Fahrer</th>
+                            <th>Konstrukteur</th>
+                            <th><img src={Bahrain} alt="Bahrain" className='img-size'/></th>
+                            <th><img src={SaudiArabien} alt="SaudiArabien" className='img-size'/></th>
+                            <th><img src={Australien} alt="Australien" className='img-size'/></th>
+                            <th><img src={Aserbaidschan} alt="Aserbeidschan" className='img-size'/></th>
+                            <th><img src={USA} alt="USA" className='img-size'/></th>
+                            <th><img src={Italien} alt="Italien" className='img-size'/></th>
+                            <th><img src={Monaco} alt="Monaco" className='img-size'/></th>
+                            <th><img src={Spanien} alt="Spanien" className='img-size'/></th>
+                            <th><img src={Kanada} alt="Kanada" className='img-size'/></th>
+                            <th><img src={Österreich} alt="Österreich" className='img-size'/></th>
+                            <th><img src={England} alt="England" className='img-size'/></th>
+                            <th><img src={Ungarn} alt="Ungarn" className='img-size'/></th>
+                            <th><img src={Belgien} alt="Belgien" className='img-size'/></th>
+                            <th><img src={Niederlande} alt="Niederlande" className='img-size'/></th>
+                            <th><img src={Singapur} alt="Singapur" className='img-size'/></th>
+                            <th><img src={Japan} alt="Japan" className='img-size'/></th>
+                            <th><img src={Katar} alt="Katar" className='img-size'/></th>
+                            <th><img src={Mexiko} alt="Mexiko" className='img-size'/></th>
+                            <th><img src={Brasilien} alt="Brasilien" className='img-size'/></th>
+                            <th><img src={AbuDhabi} alt="AbuDhabi" className='img-size'/></th>
+                            <th>Gesamtpunkte</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {personen.map((person, index) => (
+                        <tr key={index}>
+                            <td></td> {/* Pos */}
+                            <td>{person.spielerID}</td> {/* Fahrer */}
+                            {/* Rest der Zellen */}
+                            <td>{person.team}</td> {/* Konstrukteur */}
+                            <td></td> {/* Bahrain */}
+                            {/* ... */}
+                            <td></td> {/* Punkte */}
+                        </tr>
+                        ))}
+                    </tbody>
+                </Table>
+            </ScrollArea>
         </div>
     );
 }

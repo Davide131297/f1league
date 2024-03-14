@@ -9,3 +9,14 @@
     padding-top: 10px;
     overflow-x: auto;
 }
+
+.scrollarea {
+    height: calc(100vh - 100px);
+}
+
+.thead-sticky th {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 10;
+}
