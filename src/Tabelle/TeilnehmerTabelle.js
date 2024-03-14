@@ -32,6 +32,7 @@ import AbuDhabi from './../Flaggen/abudhabi.png';
 function TeilnehmerTabelle() {
     const [personen, setPersonen] = useState([]);
     const [userID, setUserID] = useState('');
+    const [gesamtPunkte, setGesamtPunkte] = useState(0);
 
     useEffect(() => {
         const personenRef = collection(db, 'personen');
@@ -45,11 +46,24 @@ function TeilnehmerTabelle() {
             });
             setPersonen(tempListe);
             console.log("Personen", tempListe);
+
+            // Berechnen Sie die Gesamtpunkte neu
+            const newGesamtPunkte = tempListe.reduce((acc, person) => {
+                for (const key in person) {
+                    if (key !== 'id' && key !== 'spielerID' && key !== 'team' && key !== 'passwort') {
+                        acc += parseInt(person[key]) || 0;
+                    }
+                }
+                return acc;
+            }, 0);
+            setGesamtPunkte(newGesamtPunkte);
+            console.log("Gesamtpunkte", newGesamtPunkte);
         });
 
         // Aufräumen bei Unmount
         return () => unsubscribe();
     }, []);
+
 
     useEffect(() => {
         function getCookie(name) {
@@ -350,7 +364,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td></td> {/* Punkte */}
+                            <td>{gesamtPunkte}</td>
                         </tr>
                         ))}
                     </tbody>

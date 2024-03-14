@@ -1,0 +1,11 @@
+{
+    "person": {
+        "id": "1",
+        "spielerID": "Davide",
+        "passwort": "1234",
+        "bahrein": "10",
+        "japan": "10",
+        "australien": "10",
+        "spanien": "10"
+    }
+}
