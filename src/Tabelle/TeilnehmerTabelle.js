@@ -46,6 +46,22 @@ function TeilnehmerTabelle() {
         return () => unsubscribe();
     }, []);
 
+    const punkte = [
+        "DNF",
+        "0",
+        "1",
+        "2",
+        "4",
+        "6",
+        "8",
+        "10",
+        "12",
+        "15",
+        "18",
+        "25",
+        "26"
+    ];
+
     return (
         <div className='table-container'>
             <ScrollArea type='never' className='scrollarea'>
@@ -85,7 +101,11 @@ function TeilnehmerTabelle() {
                             <td>{person.spielerID}</td> {/* Fahrer */}
                             {/* Rest der Zellen */}
                             <td>{person.team}</td> {/* Konstrukteur */}
-                            <td></td> {/* Bahrain */}
+                            <td>
+                                <select>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td> {/* Bahrain */}
                             {/* ... */}
                             <td></td> {/* Punkte */}
                         </tr>
