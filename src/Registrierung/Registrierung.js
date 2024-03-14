@@ -7,7 +7,7 @@ import { SHA256 } from 'crypto-js';
 import Form from 'react-bootstrap/Form';
 
 
-function Registrierung() {
+function Registrierung({ setShow }) {
 
   // Zustand für die Formulardaten
   const [spielerID, setSpielerID] = useState('');
@@ -62,6 +62,7 @@ function Registrierung() {
       await updateDoc(doc(db, "personen", docRef.id), {
         id: docRef.id
       });
+      setShow(false);
     } catch (e) {
       console.error("Fehler beim Speichern der Person: ", e);
     }
@@ -84,6 +85,7 @@ function Registrierung() {
         const personData = querySnapshot.docs[0].data();
         if (personData.passwort === hashedPassword) {
           alert("Erfolgreich eingeloggt!");
+          setShow(false);
         } else {
           alert("Falsches Passwort!");
         }

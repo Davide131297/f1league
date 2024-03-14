@@ -40,7 +40,7 @@ const Header = () => {
                     <CloseButton onClick={handleClose} className="closeButton"/>
                 </Modal.Header>
                 <Modal.Body className="d-flex justify-content-center">
-                    <Registrierung />
+                    <Registrierung setShow={setShow}/>
                 </Modal.Body>
             </Modal>
         </>
