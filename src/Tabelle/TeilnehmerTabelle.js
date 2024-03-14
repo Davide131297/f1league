@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db } from './../utils/firebase';
-import { collection, onSnapshot } from 'firebase/firestore';
+import { collection, onSnapshot, doc, updateDoc } from 'firebase/firestore';
 import Table from 'react-bootstrap/Table';
 import './TeilnehmerTabelle.css';
 import { ScrollArea } from '@mantine/core';
@@ -40,11 +40,11 @@ function TeilnehmerTabelle() {
             snapshot.forEach((doc) => {
                 tempListe.push({ 
                     id: doc.id, 
-                    spielerID: doc.data().spielerID, 
-                    team: doc.data().team 
+                    ...doc.data() // Hier werden alle Attribute des Dokuments abgerufen
                 });
             });
             setPersonen(tempListe);
+            console.log("Personen", tempListe);
         });
 
         // Aufräumen bei Unmount
@@ -78,6 +78,16 @@ function TeilnehmerTabelle() {
         "25",
         "26"
     ];
+
+    const handleSelectChange = (event, personId, field) => {
+        const value = event.target.value;
+
+        // Aktualisieren Sie das Dokument in der Datenbank
+        const personRef = doc(db, 'personen', personId);
+        updateDoc(personRef, {
+            [field]: value
+        });
+    };
 
     return (
         <div className='table-container'>
@@ -121,133 +131,221 @@ function TeilnehmerTabelle() {
                             {/* Rest der Zellen */}
                             <td>{person.team}</td> {/* Konstrukteur */}
                             <td> {/* Bahrain */}
-                                <select disabled={person.id !== userID}>
-                                    <option selected value={null}></option>
-                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
-                                </select>
+                            <select 
+                                value={person.bahrain || ''}
+                                disabled={person.id !== userID}
+                                onChange={(e) => handleSelectChange(e, person.id, 'bahrain')}
+                            >
+                                <option selected value={null}></option>
+                                {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                            </select>
                             </td>
                             <td> {/* SaudiArabien */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.saudiarabien || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'saudiarabien')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* Australien */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.australien || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'australien')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* Aserbaidschan */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.aserbaidschan || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'aserbaidschan')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* Miami */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.miami || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'miami')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* Italien */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.italien || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'italien')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* Monaco */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.monaco || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'monaco')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* Spanien */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.spanien || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'spanien')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* Kanada */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.kanada || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'kanada')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* Österreich */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.österreich || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'österreich')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* England */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.england || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'england')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* Ungarn */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.ungarn || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'ungarn')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* Belgien */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.belgien || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'belgien')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* Niederlande */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.niederlande || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'niederlande')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* Singapur */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.singapur || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'singapur')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* Japan */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.japan || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'japan')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* Katar */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.katar || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'katar')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* USA */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.usa || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'usa')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* Mexiko */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.mexiko || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'mexiko')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* Brasilien */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.brasilien || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'brasilien')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* LasVegas */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.lasvegas || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'lasvegas')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
                             <td> {/* AbuDhabi */}
-                                <select disabled={person.id !== userID}>
+                                <select 
+                                    value={person.abudhabi || ''}
+                                    disabled={person.id !== userID}
+                                    onChange={(e) => handleSelectChange(e, person.id, 'abudhabi')}
+                                >
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
