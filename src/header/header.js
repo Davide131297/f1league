@@ -15,7 +15,7 @@ const Header = () => {
 
     return (
         <>
-            <Navbar className="navbar" expand="lg">
+            <Navbar className="navbar">
                 <Container>
                     <Navbar.Brand className="navbar-brand">
                         <img

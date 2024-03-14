@@ -1,5 +1,4 @@
 import React from 'react';
-import Registrierung from './Registrierung/Registrierung';
 import Header from './header/header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
