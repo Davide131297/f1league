@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-import { Input, Button } from '@mantine/core';
+import React, { useState, useEffect } from 'react';
+import { Input, Button, Select } from '@mantine/core';
 import { db } from '../utils/firebase';
 import { collection, addDoc, updateDoc, doc, getDocs, query, where } from 'firebase/firestore';
 import './Registrierung.css';
 import { SHA256 } from 'crypto-js';
+import Form from 'react-bootstrap/Form';
+
 
 function Registrierung() {
 
@@ -11,6 +13,20 @@ function Registrierung() {
   const [spielerID, setSpielerID] = useState('');
   const [passwort, setPasswort] = useState('');
   const [team, setTeam] = useState('');
+
+  const teams = [
+    "Mercedes",
+    "Red Bull Racing",
+    "Ferrari",
+    "McLaren",
+    "Aston Martin",
+    "Alpine",
+    "AlphaTauri",
+    "Alfa Romeo",
+    "Williams",
+    "Haas"
+  ];
+
 
   // Funktion zum Speichern der Person in der Kollektion 'personen'
   const addPerson = async (event) => {
@@ -93,11 +109,12 @@ function Registrierung() {
           value={passwort} 
           onChange={(event) => setPasswort(event.currentTarget.value)} 
         />
-        <Input 
-          placeholder="Team"
-          value={team} 
-          onChange={(event) => setTeam(event.currentTarget.value)} 
-        />
+        <Form.Select aria-label="Wähle dein Team" onChange={(event) => setTeam(event.currentTarget.value)}>
+          <option>Wähle dein Team</option>
+          {teams.map((team, index) => (
+            <option key={index} value={team}>{team}</option>
+          ))}
+        </Form.Select>
         <div className='buttons'>
           <Button type="submit">Registrieren</Button>
           <Button type="button" onClick={checkCredentials}>Login</Button>

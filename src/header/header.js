@@ -6,6 +6,7 @@ import './header.css';
 import { Button } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal';
 import Registrierung from "../Registrierung/Registrierung";
+import CloseButton from 'react-bootstrap/CloseButton';
 
 const Header = () => {
 
@@ -36,9 +37,7 @@ const Header = () => {
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
                     <Modal.Title>Anmelden</Modal.Title>
-                    <Button variant="secondary" onClick={handleClose} className="closeButton">
-                        Schließen
-                    </Button>
+                    <CloseButton onClick={handleClose} className="closeButton"/>
                 </Modal.Header>
                 <Modal.Body className="d-flex justify-content-center">
                     <Registrierung />

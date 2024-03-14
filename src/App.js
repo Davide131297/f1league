@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './header/header';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@mantine/core/styles.css';
 import './App.css';
 import Teilnehmerliste from './Tabelle/TeilnehmerTabelle';
 

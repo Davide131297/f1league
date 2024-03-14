@@ -15,6 +15,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  z-index: 9999;
 }
 
 .registrierung form input {
@@ -27,6 +28,7 @@
 .buttons {
   display: flex;
   justify-content: space-between;
+  margin-top: 30px;
 }
 
 .buttons button {
