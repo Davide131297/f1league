@@ -15,6 +15,12 @@ function Registrierung() {
   const addPerson = async (event) => {
     event.preventDefault();
 
+    // Überprüfen, ob sowohl SpielerID als auch Passwort eingegeben wurden
+    if (!spielerID || !passwort) {
+      alert('Bitte geben Sie sowohl SpielerID als auch Passwort ein.');
+      return;
+    }
+
     const hashedPassword = SHA256(passwort).toString();
 
     const personData = {
