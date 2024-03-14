@@ -1,0 +1,11 @@
+.img-size {
+    max-width: 30px;
+    max-height: 15px;
+}
+
+.table-container {
+    width: 90%;
+    margin: auto;
+    padding-top: 10px;
+    overflow-x: auto;
+}
