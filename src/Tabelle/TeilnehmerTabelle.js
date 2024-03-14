@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db } from './../utils/firebase';
 import { collection, onSnapshot } from 'firebase/firestore';
-import { doc, updateDoc } from "firebase/firestore"; 
 import Table from 'react-bootstrap/Table';
 import './TeilnehmerTabelle.css';
 import { ScrollArea } from '@mantine/core';
@@ -33,9 +32,6 @@ import AbuDhabi from './../Flaggen/abudhabi.png';
 function TeilnehmerTabelle() {
     const [personen, setPersonen] = useState([]);
     const [userID, setUserID] = useState('');
-    const [selectedBahrain, setSelectedBahrain] = useState(null);
-
-    
 
     useEffect(() => {
         const personenRef = collection(db, 'personen');
@@ -45,12 +41,10 @@ function TeilnehmerTabelle() {
                 tempListe.push({ 
                     id: doc.id, 
                     spielerID: doc.data().spielerID, 
-                    team: doc.data().team,
-                    strecken: doc.data().strecken
+                    team: doc.data().team 
                 });
             });
             setPersonen(tempListe);
-            console.log("Personen", tempListe);
         });
 
         // Aufräumen bei Unmount
@@ -127,18 +121,8 @@ function TeilnehmerTabelle() {
                             {/* Rest der Zellen */}
                             <td>{person.team}</td> {/* Konstrukteur */}
                             <td> {/* Bahrain */}
-                                <select 
-                                    disabled={person.id !== userID} 
-                                    value={person.strecken.bahrein.punkte}
-                                    onChange={async (e) => {
-                                        setSelectedBahrain(e.target.value);
-                                        const personRef = doc(db, "personen", person.id);
-                                        await updateDoc(personRef, {
-                                            "strecken.bahrein.punkte": e.target.value
-                                        });
-                                    }}
-                                >
-                                    <option value={null}></option>
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
