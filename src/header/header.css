@@ -14,8 +14,6 @@
 .navbar-brand {
     display: flex;
     align-items: center;
-    margin-left: 70px;
-    margin-right: 0px;
 }
 
 .d-flex {
@@ -28,8 +26,4 @@
 
 .closeButton {
    margin-left: auto;
-}
-
-.loginButton {
-    margin-right: 50px;
 }

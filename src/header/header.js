@@ -17,6 +17,7 @@ const Header = () => {
     return (
         <>
             <Navbar className="navbar">
+                <Container>
                     <Navbar.Brand className="navbar-brand">
                         <img
                             alt=""
@@ -28,8 +29,9 @@ const Header = () => {
                         <span className="title">Int-Legendz F1 Liga</span>
                     </Navbar.Brand>
                     <Navbar.Collapse className="justify-content-end">
-                        <Button className="loginButton" onClick={handleShow} variant="light">Login</Button>
+                        <Button onClick={handleShow} variant="light">Login</Button>
                     </Navbar.Collapse>
+                </Container>
             </Navbar>
 
             <Modal show={show} onHide={handleClose}>
