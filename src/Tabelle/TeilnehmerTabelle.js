@@ -36,7 +36,7 @@ function TeilnehmerTabelle() {
         const unsubscribe = onSnapshot(personenRef, (snapshot) => {
             let tempListe = [];
             snapshot.forEach((doc) => {
-                tempListe.push({ spielerID: doc.data().spielerID });
+                tempListe.push({ spielerID: doc.data().spielerID, team: doc.data().team });
             });
             setPersonen(tempListe);
         });
@@ -82,7 +82,7 @@ function TeilnehmerTabelle() {
                         <td></td> {/* Pos */}
                         <td>{person.spielerID}</td> {/* Fahrer */}
                         {/* Rest der Zellen */}
-                        <td></td> {/* Konstrukteur */}
+                        <td>{person.team}</td> {/* Konstrukteur */}
                         <td></td> {/* Bahrain */}
                         {/* ... */}
                         <td></td> {/* Punkte */}
