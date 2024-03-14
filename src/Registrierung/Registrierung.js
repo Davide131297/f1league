@@ -32,7 +32,7 @@ function Registrierung({ setShow }) {
   const addPerson = async (event) => {
     event.preventDefault();
 
-    // Überprüfen, ob sowohl SpielerID als auch Passwort eingegeben wurden
+    // Überprüfen, ob sowohl SpielerID als auch Passwort und Team eingegeben wurden
     if (!spielerID || !passwort || !team) {
       alert('Bitte geben Sie SpielerID, Passwort und Team ein.');
       return;
@@ -52,6 +52,14 @@ function Registrierung({ setShow }) {
       const querySnapshot = await getDocs(q);
       if (!querySnapshot.empty) {
         alert("Eine Person mit dieser SpielerID existiert bereits.");
+        return;
+      }
+
+      // Überprüfen, ob das Team bereits zwei Personen hat
+      const teamQuery = query(collection(db, "personen"), where("team", "==", team));
+      const teamSnapshot = await getDocs(teamQuery);
+      if (teamSnapshot.size >= 2) {
+        alert("Bitte wähle ein anderes Team, dieses Team ist bereits voll.");
         return;
       }
 
