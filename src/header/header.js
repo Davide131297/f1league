@@ -8,12 +8,18 @@ import Modal from 'react-bootstrap/Modal';
 import Registrierung from "../Registrierung/Registrierung";
 import CloseButton from 'react-bootstrap/CloseButton';
 
+const getCookie = (name) => {
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+}
+
 const Header = () => {
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(getCookie('userID') ? true : false);
     const [showLogout, setShowLogout] = useState(false);
     const handleLogoutClose = () => setShowLogout(false);
     const handleLogoutShow = () => setShowLogout(true);
