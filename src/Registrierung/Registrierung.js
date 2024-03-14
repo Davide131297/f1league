@@ -16,7 +16,7 @@ function Registrierung({ setShow, setIsAuthenticated }) {
 
   const teams = [
     "Mercedes",
-    "Red Bull Racing",
+    "Red Bull",
     "Ferrari",
     "McLaren",
     "Aston Martin",

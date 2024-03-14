@@ -4,7 +4,7 @@
 }
 
 .table-container {
-    width: 95%;
+    width: 97%;
     margin: auto;
     padding-top: 10px;
     overflow-x: auto;
@@ -19,4 +19,12 @@
     top: 0;
     background: white;
     z-index: 10;
+}
+
+td {
+    padding: 5px !important;
+}
+
+th {
+    text-align: center;
 }

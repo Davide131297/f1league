@@ -92,7 +92,7 @@ function TeilnehmerTabelle() {
                             <th><img src={SaudiArabien} alt="SaudiArabien" className='img-size'/></th>
                             <th><img src={Australien} alt="Australien" className='img-size'/></th>
                             <th><img src={Aserbaidschan} alt="Aserbeidschan" className='img-size'/></th>
-                            <th><img src={USA} alt="USA" className='img-size'/></th>
+                            <th><img src={USA} alt="Miami" className='img-size'/></th>
                             <th><img src={Italien} alt="Italien" className='img-size'/></th>
                             <th><img src={Monaco} alt="Monaco" className='img-size'/></th>
                             <th><img src={Spanien} alt="Spanien" className='img-size'/></th>
@@ -105,8 +105,10 @@ function TeilnehmerTabelle() {
                             <th><img src={Singapur} alt="Singapur" className='img-size'/></th>
                             <th><img src={Japan} alt="Japan" className='img-size'/></th>
                             <th><img src={Katar} alt="Katar" className='img-size'/></th>
+                            <th><img src={USA} alt="USA" className='img-size'/></th>
                             <th><img src={Mexiko} alt="Mexiko" className='img-size'/></th>
                             <th><img src={Brasilien} alt="Brasilien" className='img-size'/></th>
+                            <th><img src={USA} alt="LasVegas" className='img-size'/></th>
                             <th><img src={AbuDhabi} alt="AbuDhabi" className='img-size'/></th>
                             <th>Gesamtpunkte</th>
                         </tr>
@@ -142,7 +144,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* USA */}
+                            <td> {/* Miami */}
                                 <select disabled={person.id !== userID}>
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
@@ -220,6 +222,12 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
+                            <td> {/* USA */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
                             <td> {/* Mexiko */}
                                 <select disabled={person.id !== userID}>
                                     <option selected value={null}></option>
@@ -227,6 +235,12 @@ function TeilnehmerTabelle() {
                                 </select>
                             </td>
                             <td> {/* Brasilien */}
+                                <select disabled={person.id !== userID}>
+                                    <option selected value={null}></option>
+                                    {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
+                                </select>
+                            </td>
+                            <td> {/* LasVegas */}
                                 <select disabled={person.id !== userID}>
                                     <option selected value={null}></option>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
