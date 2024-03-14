@@ -31,19 +31,36 @@ import AbuDhabi from './../Flaggen/abudhabi.png';
 
 function TeilnehmerTabelle() {
     const [personen, setPersonen] = useState([]);
+    const [userID, setUserID] = useState('');
 
     useEffect(() => {
         const personenRef = collection(db, 'personen');
         const unsubscribe = onSnapshot(personenRef, (snapshot) => {
             let tempListe = [];
             snapshot.forEach((doc) => {
-                tempListe.push({ spielerID: doc.data().spielerID, team: doc.data().team });
+                tempListe.push({ 
+                    id: doc.id, 
+                    spielerID: doc.data().spielerID, 
+                    team: doc.data().team 
+                });
             });
             setPersonen(tempListe);
         });
 
         // Aufräumen bei Unmount
         return () => unsubscribe();
+    }, []);
+
+    useEffect(() => {
+        function getCookie(name) {
+            const value = "; " + document.cookie;
+            const parts = value.split("; " + name + "=");
+            if (parts.length === 2) return parts.pop().split(";").shift();
+        }
+
+        const userID = getCookie('userID');
+        setUserID(userID);
+        console.log("Angemeldeter Nutzer", userID); // Hier können Sie die userID verwenden
     }, []);
 
     const punkte = [
@@ -102,7 +119,7 @@ function TeilnehmerTabelle() {
                             {/* Rest der Zellen */}
                             <td>{person.team}</td> {/* Konstrukteur */}
                             <td>
-                                <select>
+                                <select disabled={person.id !== userID}>
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td> {/* Bahrain */}

@@ -93,6 +93,11 @@ function Registrierung({ setShow }) {
         const personData = querySnapshot.docs[0].data();
         if (personData.passwort === hashedPassword) {
           alert("Erfolgreich eingeloggt!");
+          // Cookie
+          let date = new Date();
+          date.setTime(date.getTime() + (1*60*60*1000)); // Cookie läuft nach 1 Stunde ab
+          let expires = "; expires=" + date.toUTCString();
+          document.cookie = "userID=" + personData.id + expires + "; path=/";
           setShow(false);
         } else {
           alert("Falsches Passwort!");
