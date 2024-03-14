@@ -45,7 +45,6 @@ function TeilnehmerTabelle() {
                 });
             });
             setPersonen(tempListe);
-            console.log("Personen", tempListe);
 
             // Berechnen Sie die Gesamtpunkte neu
             const newGesamtPunkte = tempListe.reduce((acc, person) => {
@@ -57,7 +56,6 @@ function TeilnehmerTabelle() {
                 return acc;
             }, 0);
             setGesamtPunkte(newGesamtPunkte);
-            console.log("Gesamtpunkte", newGesamtPunkte);
         });
 
         // Aufräumen bei Unmount
@@ -74,7 +72,6 @@ function TeilnehmerTabelle() {
 
         const userID = getCookie('userID');
         setUserID(userID);
-        console.log("Angemeldeter Nutzer", userID); // Hier können Sie die userID verwenden
     }, []);
 
     const punkte = [
