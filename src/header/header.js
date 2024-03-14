@@ -1,11 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import LigaLogo from './LigaLogo.jpg';
 import './header.css';
 import { Button } from "react-bootstrap";
+import Modal from 'react-bootstrap/Modal';
+import Registrierung from "../Registrierung/Registrierung";
 
 const Header = () => {
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return (
         <>
             <Navbar className="navbar" expand="lg">
@@ -21,10 +28,22 @@ const Header = () => {
                         <span className="title">Int-Legendz F1 Liga</span>
                     </Navbar.Brand>
                     <Navbar.Collapse className="justify-content-end">
-                        <Button variant="light">Login</Button>
+                        <Button onClick={handleShow} variant="light">Login</Button>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header>
+                    <Modal.Title>Anmelden</Modal.Title>
+                    <Button variant="secondary" onClick={handleClose} className="closeButton">
+                        Schließen
+                    </Button>
+                </Modal.Header>
+                <Modal.Body className="d-flex justify-content-center">
+                    <Registrierung />
+                </Modal.Body>
+            </Modal>
         </>
     );
 };

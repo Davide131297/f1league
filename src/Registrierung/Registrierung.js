@@ -67,7 +67,7 @@ function Registrierung() {
   };
 
   return (
-    <div className="App">
+    <div className="registrierung">
       <form onSubmit={addPerson}>
         <Input 
           placeholder="SpielerID" 
@@ -80,8 +80,10 @@ function Registrierung() {
           value={passwort} 
           onChange={(event) => setPasswort(event.currentTarget.value)} 
         />
-        <Button type="submit">Registrieren</Button>
-        <Button type="button" onClick={checkCredentials}>Login</Button>
+        <div className='buttons'>
+          <Button type="submit">Registrieren</Button>
+          <Button type="button" onClick={checkCredentials}>Login</Button>
+        </div>
       </form>
     </div>
   );
