@@ -43,7 +43,30 @@ function Registrierung({ setShow, setIsAuthenticated }) {
     const personData = {
       spielerID,
       passwort: hashedPassword,
-      team
+      team,
+      bahrain: null,
+      saudiarabien: null,
+      australien: null,
+      aserbaidschan: null,
+      miami: null,
+      italien: null,
+      monaco: null,
+      spanien: null,
+      kanada: null,
+      österreich: null,
+      england: null,
+      ungarn: null,
+      belgien: null,
+      niederlande: null,
+      niederlande: null,
+      singapur: null,
+      japan: null,
+      katar: null,
+      usa: null,
+      mexiko: null,
+      brasilien: null,
+      lasvegas: null,
+      abudhabi: null
     };
 
     try {
