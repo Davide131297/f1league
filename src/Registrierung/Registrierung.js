@@ -100,6 +100,7 @@ function Registrierung({ setShow, setIsAuthenticated }) {
           document.cookie = "userID=" + personData.id + expires + "; path=/";
           setShow(false);
           setIsAuthenticated(true);
+          window.location.reload();
         } else {
           alert("Falsches Passwort!");
         }

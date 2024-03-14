@@ -29,6 +29,7 @@ const Header = () => {
         if (confirmLogout) {
             document.cookie = "userID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             setIsAuthenticated(false);
+            window.location.reload();
         }
     };
 
