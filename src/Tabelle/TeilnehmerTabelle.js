@@ -139,7 +139,6 @@ function TeilnehmerTabelle() {
                         <tr key={index}>
                             <td></td> {/* Pos */}
                             <td>{person.spielerID}</td> {/* Fahrer */}
-                            {/* Rest der Zellen */}
                             <td>{person.team}</td> {/* Konstrukteur */}
                             <td> {/* Bahrain */}
                             <select 
