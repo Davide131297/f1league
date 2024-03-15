@@ -28,3 +28,26 @@ td {
 th {
     text-align: center;
 }
+
+.sticky-name {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    left: 0;
+}
+
+.fahrer {
+    position: sticky;
+    position: -webkit-sticky;
+    left: 0;
+    background: white;
+    z-index: 20;
+}
+
+#fahrer {
+    position: sticky;
+    position: -webkit-sticky;
+    left: 0;
+    background: white;
+    z-index: 20;
+}

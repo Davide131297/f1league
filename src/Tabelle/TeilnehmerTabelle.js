@@ -107,8 +107,8 @@ function TeilnehmerTabelle() {
                     <thead className='thead-sticky'>
                         <tr>
                             <th>Pos</th>
-                            <th>Fahrer</th>
-                            <th>Konstrukteur</th>
+                            <th id='fahrer'>Fahrer</th>
+                            <th style={{zIndex: '10'}}>Konstrukteur</th>
                             <th><img src={Bahrain} alt="Bahrain" className='img-size'/></th>
                             <th><img src={SaudiArabien} alt="SaudiArabien" className='img-size'/></th>
                             <th><img src={Australien} alt="Australien" className='img-size'/></th>
@@ -138,7 +138,7 @@ function TeilnehmerTabelle() {
                         {personen.map((person, index) => (
                         <tr key={index}>
                             <td></td> {/* Pos */}
-                            <td>{person.spielerID}</td> {/* Fahrer */}
+                            <td className='fahrer'>{person.spielerID}</td> {/* Fahrer */}
                             <td>{person.team}</td> {/* Konstrukteur */}
                             <td> {/* Bahrain */}
                             <select 
