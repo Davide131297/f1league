@@ -45,17 +45,6 @@ function TeilnehmerTabelle() {
                 });
             });
             setPersonen(tempListe);
-
-            // Berechnen Sie die Gesamtpunkte neu
-            const newGesamtPunkte = tempListe.reduce((acc, person) => {
-                for (const key in person) {
-                    if (key !== 'id' && key !== 'spielerID' && key !== 'team' && key !== 'passwort') {
-                        acc += parseInt(person[key]) || 0;
-                    }
-                }
-                return acc;
-            }, 0);
-            setGesamtPunkte(newGesamtPunkte);
         });
 
         // Aufräumen bei Unmount
@@ -101,22 +90,36 @@ function TeilnehmerTabelle() {
         // Aktualisieren Sie das Dokument in der Datenbank
         const personRef = doc(db, 'personen', personId);
 
-        // Holen Sie das aktuelle Dokument
+        // Aktualisieren Sie das Dokument mit dem neuen Wert
+        await updateDoc(personRef, {
+            [field]: value
+        });
+
+        // Holen Sie das aktualisierte Dokument
         const personDoc = await getDoc(personRef);
 
-        // Überprüfen Sie, ob das Dokument existiert und gesamtPunkte hat
-        let gesamtPunkte = personDoc.exists() && personDoc.data().gesamtPunkte ? parseInt(personDoc.data().gesamtPunkte) : 0;
+        // Holen Sie alle Daten aus dem Dokument
+        let personData = personDoc.data();
 
-        // Addieren Sie den neuen Wert zu gesamtPunkte
-        gesamtPunkte += value;
+        // Initialisieren Sie gesamtPunkte mit 0
+        let gesamtPunkte = 0;
 
-        // Aktualisieren Sie das Dokument
+        // Durchlaufen Sie alle Attribute in den Daten
+        for (let attribute in personData) {
+            // Überprüfen Sie, ob der Wert ein Integer ist und das Attribut nicht gesamtPunkte ist
+            if (attribute !== 'gesamtPunkte' && Number.isInteger(personData[attribute])) {
+                // Addieren Sie den Wert zu gesamtPunkte
+                gesamtPunkte += personData[attribute];
+            }
+        }
+
+        // Aktualisieren Sie das Dokument mit gesamtPunkte
         await updateDoc(personRef, {
-            [field]: value,
             gesamtPunkte: gesamtPunkte
         });
 
         console.log('PersonenID: ', personId, 'Feld: ', field, 'Wert: ', value);
+        console.log('Gesamtpunkte: ', gesamtPunkte);
     };
 
     return (
@@ -380,7 +383,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/*{gesamtPunkte} */}</td>
+                            <td>{person.gesamtPunkte || 0}</td> {/* Gesamtpunkte */}
                         </tr>
                         ))}
                     </tbody>
