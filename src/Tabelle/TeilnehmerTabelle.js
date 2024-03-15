@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db } from './../utils/firebase';
-import { collection, onSnapshot, doc, updateDoc } from 'firebase/firestore';
+import { collection, onSnapshot, doc, updateDoc, getDoc } from 'firebase/firestore';
 import Table from 'react-bootstrap/Table';
 import './TeilnehmerTabelle.css';
 import { ScrollArea } from '@mantine/core';
@@ -75,29 +75,48 @@ function TeilnehmerTabelle() {
     }, []);
 
     const punkte = [
-        "DNF",
         "0",
-        "1",
-        "2",
-        "4",
-        "6",
-        "8",
-        "10",
-        "12",
-        "15",
-        "18",
-        "25",
-        "26"
+        1,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        15,
+        18,
+        25,
+        26
     ];
 
-    const handleSelectChange = (event, personId, field) => {
-        const value = event.target.value;
+    const handleSelectChange = async (event, personId, field) => {
+        let value = parseInt(event.target.value);
+        console.log('Value: ', value);
+
+        // Wenn value null ist, beenden Sie die Funktion frühzeitig
+        if (value === null) {
+            return;
+        }
 
         // Aktualisieren Sie das Dokument in der Datenbank
         const personRef = doc(db, 'personen', personId);
-        updateDoc(personRef, {
-            [field]: value
+
+        // Holen Sie das aktuelle Dokument
+        const personDoc = await getDoc(personRef);
+
+        // Überprüfen Sie, ob das Dokument existiert und gesamtPunkte hat
+        let gesamtPunkte = personDoc.exists() && personDoc.data().gesamtPunkte ? parseInt(personDoc.data().gesamtPunkte) : 0;
+
+        // Addieren Sie den neuen Wert zu gesamtPunkte
+        gesamtPunkte += value;
+
+        // Aktualisieren Sie das Dokument
+        await updateDoc(personRef, {
+            [field]: value,
+            gesamtPunkte: gesamtPunkte
         });
+
+        console.log('PersonenID: ', personId, 'Feld: ', field, 'Wert: ', value);
     };
 
     return (
@@ -142,17 +161,18 @@ function TeilnehmerTabelle() {
                             <td>{person.team}</td> {/* Konstrukteur */}
                             <td> {/* Bahrain */}
                             <select 
-                                value={person.bahrain || ''}
+                                value={person.bahrain === null ? '' : person.bahrain}
                                 disabled={person.id !== userID}
                                 onChange={(e) => handleSelectChange(e, person.id, 'bahrain')}
                             >
-                                <option selected value={null}></option>
+                                <option value={null}></option>
                                 {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                             </select>
+
                             </td>
                             <td> {/* SaudiArabien */}
                                 <select 
-                                    value={person.saudiarabien || ''}
+                                    value={person.saudiarabien === null ? '' : person.saudiarabien}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'saudiarabien')}
                                 >
@@ -162,7 +182,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* Australien */}
                                 <select 
-                                    value={person.australien || ''}
+                                    value={person.australien === null ? '' : person.australien}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'australien')}
                                 >
@@ -172,7 +192,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* Aserbaidschan */}
                                 <select 
-                                    value={person.aserbaidschan || ''}
+                                    value={person.aserbaidschan === null ? '' : person.aserbaidschan}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'aserbaidschan')}
                                 >
@@ -182,7 +202,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* Miami */}
                                 <select 
-                                    value={person.miami || ''}
+                                    value={person.miami === null ? '' : person.miami}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'miami')}
                                 >
@@ -192,7 +212,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* Italien */}
                                 <select 
-                                    value={person.italien || ''}
+                                    value={person.italien === null ? '' : person.italien}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'italien')}
                                 >
@@ -202,7 +222,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* Monaco */}
                                 <select 
-                                    value={person.monaco || ''}
+                                    value={person.monaco === null ? '' : person.monaco}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'monaco')}
                                 >
@@ -212,7 +232,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* Spanien */}
                                 <select 
-                                    value={person.spanien || ''}
+                                    value={person.spanien === null ? '' : person.spanien}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'spanien')}
                                 >
@@ -222,7 +242,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* Kanada */}
                                 <select 
-                                    value={person.kanada || ''}
+                                    value={person.kanada === null ? '' : person.kanada}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'kanada')}
                                 >
@@ -232,7 +252,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* Österreich */}
                                 <select 
-                                    value={person.österreich || ''}
+                                    value={person.österreich === null ? '' : person.österreich}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'österreich')}
                                 >
@@ -242,7 +262,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* England */}
                                 <select 
-                                    value={person.england || ''}
+                                    value={person.england === null ? '' : person.england}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'england')}
                                 >
@@ -252,7 +272,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* Ungarn */}
                                 <select 
-                                    value={person.ungarn || ''}
+                                    value={person.ungarn === null ? '' : person.ungarn}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'ungarn')}
                                 >
@@ -262,7 +282,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* Belgien */}
                                 <select 
-                                    value={person.belgien || ''}
+                                    value={person.belgien === null ? '' : person.belgien}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'belgien')}
                                 >
@@ -272,7 +292,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* Niederlande */}
                                 <select 
-                                    value={person.niederlande || ''}
+                                    value={person.neiderlande === null ? '' : person.niederlande}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'niederlande')}
                                 >
@@ -282,7 +302,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* Singapur */}
                                 <select 
-                                    value={person.singapur || ''}
+                                    value={person.singapur === null ? '' : person.singapur}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'singapur')}
                                 >
@@ -292,7 +312,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* Japan */}
                                 <select 
-                                    value={person.japan || ''}
+                                    value={person.japan === null ? '' : person.japan}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'japan')}
                                 >
@@ -302,7 +322,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* Katar */}
                                 <select 
-                                    value={person.katar || ''}
+                                    value={person.katar === null ? '' : person.katar}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'katar')}
                                 >
@@ -312,7 +332,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* USA */}
                                 <select 
-                                    value={person.usa || ''}
+                                    value={person.usa === null ? '' : person.usa}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'usa')}
                                 >
@@ -322,7 +342,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* Mexiko */}
                                 <select 
-                                    value={person.mexiko || ''}
+                                    value={person.mexiko === null ? '' : person.mexiko}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'mexiko')}
                                 >
@@ -332,7 +352,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* Brasilien */}
                                 <select 
-                                    value={person.brasilien || ''}
+                                    value={person.brasilien === null ? '' : person.brasilien}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'brasilien')}
                                 >
@@ -342,7 +362,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* LasVegas */}
                                 <select 
-                                    value={person.lasvegas || ''}
+                                    value={person.lasvegas === null ? '' : person.lasvegas}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'lasvegas')}
                                 >
@@ -352,7 +372,7 @@ function TeilnehmerTabelle() {
                             </td>
                             <td> {/* AbuDhabi */}
                                 <select 
-                                    value={person.abudhabi || ''}
+                                    value={person.abudhabi === null ? '' : person.abudhabi}
                                     disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'abudhabi')}
                                 >
@@ -360,7 +380,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td>{gesamtPunkte}</td>
+                            <td> {/*{gesamtPunkte} */}</td>
                         </tr>
                         ))}
                     </tbody>
