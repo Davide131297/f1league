@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Input, Button } from '@mantine/core';
 import { db } from '../utils/firebase';
-import { collection, addDoc, updateDoc, doc, getDocs, query, where } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, doc, getDocs, query, where, deleteDoc } from 'firebase/firestore';
 import './Registrierung.css';
 import { SHA256 } from 'crypto-js';
 import Form from 'react-bootstrap/Form';
@@ -64,7 +64,6 @@ function Registrierung({ setShow, setIsAuthenticated }) {
       }
 
       const docRef = await addDoc(collection(db, "personen"), personData);
-      console.log("Person wurde erfolgreich gespeichert mit ID: ", docRef.id);
 
       // Fügen Sie die generierte ID dem Personendatensatz hinzu
       await updateDoc(doc(db, "personen", docRef.id), {
@@ -112,6 +111,37 @@ function Registrierung({ setShow, setIsAuthenticated }) {
     }
   };
 
+  // Funktion zum Löschen des Fahrers
+  const accDelete = async () => {
+    if (!spielerID || !passwort) {
+      alert('Bitte geben Sie sowohl SpielerID als auch Passwort ein.');
+      return;
+    }
+    const hashedPassword = SHA256(passwort).toString();
+    try {
+      // Überprüfen, ob die SpielerID existiert und das Passwort korrekt ist
+      const q = query(collection(db, "personen"), where("spielerID", "==", spielerID));
+      const querySnapshot = await getDocs(q);
+      if (!querySnapshot.empty) {
+        const personData = querySnapshot.docs[0].data();
+        if (personData.passwort === hashedPassword) {
+          const personID = personData.id;
+          // Bestätigung vor dem Löschen
+          if (window.confirm('Fahrerprofil wirklich löschen?')) {
+            await deleteDoc(doc(db, "personen", personID));
+            alert("Fahrerprofil wurde erfolgreich gelöscht.");
+            setShow(false);
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Fehler beim Löschen des Accounts: ", error);
+    } finally {
+      console.log("Operation abgeschlossen");
+    }
+  };
+    
+
   return (
     <div className="registrierung">
       <form onSubmit={addPerson}>
@@ -135,6 +165,9 @@ function Registrierung({ setShow, setIsAuthenticated }) {
         <div className='buttons'>
           <Button type="submit">Registrieren</Button>
           <Button type="button" onClick={checkCredentials}>Login</Button>
+        </div>
+        <div className='deleteAcc'>
+            <span type="button" onClick={accDelete}>Fahrer löschen</span>
         </div>
       </form>
     </div>

@@ -43,3 +43,8 @@
 .buttons button:hover {
   background-color: #0056b3;
 }
+
+.deleteAcc {
+  margin-top: 20px;
+  text-align: center;
+}
