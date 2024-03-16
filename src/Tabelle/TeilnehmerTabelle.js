@@ -32,8 +32,6 @@ import AbuDhabi from './../Flaggen/abudhabi.png';
 function TeilnehmerTabelle() {
     const [personen, setPersonen] = useState([]);
     const [userID, setUserID] = useState('');
-    const [gesamtPunkte, setGesamtPunkte] = useState(0);
-    const [adminRights, setAdminRights] = useState(false);
 
     useEffect(() => {
         const personenRef = collection(db, 'personen');
@@ -62,9 +60,7 @@ function TeilnehmerTabelle() {
         }
 
         const userID = getCookie('userID');
-        const adminRights = getCookie('adminrechte');
         setUserID(userID);
-        setAdminRights(adminRights);
     }, []);
 
     const punkte = [
@@ -190,7 +186,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.bahrain)}> {/* Bahrain */}
                             <select 
                                 value={person.bahrain === null ? '' : person.bahrain}
-                                disabled={person.id !== userID && adminRights !== "true"}
+                                disabled={person.id !== userID}
                                 onChange={(e) => handleSelectChange(e, person.id, 'bahrain')}
                             >
                                 <option value={null}></option>
@@ -201,7 +197,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.saudiarabien)}> {/* SaudiArabien */}
                                 <select 
                                     value={person.saudiarabien === null ? '' : person.saudiarabien}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'saudiarabien')}
                                 >
                                     <option selected value={null}></option>
@@ -211,7 +207,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.australien)}> {/* Australien */}
                                 <select 
                                     value={person.australien === null ? '' : person.australien}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'australien')}
                                 >
                                     <option selected value={null}></option>
@@ -221,7 +217,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.aserbaidschan)}> {/* Aserbaidschan */}
                                 <select 
                                     value={person.aserbaidschan === null ? '' : person.aserbaidschan}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'aserbaidschan')}
                                 >
                                     <option selected value={null}></option>
@@ -231,7 +227,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.miami)}> {/* Miami */}
                                 <select 
                                     value={person.miami === null ? '' : person.miami}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'miami')}
                                 >
                                     <option selected value={null}></option>
@@ -241,7 +237,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.italien)}> {/* Italien */}
                                 <select 
                                     value={person.italien === null ? '' : person.italien}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'italien')}
                                 >
                                     <option selected value={null}></option>
@@ -251,7 +247,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.monaco)}> {/* Monaco */}
                                 <select 
                                     value={person.monaco === null ? '' : person.monaco}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'monaco')}
                                 >
                                     <option selected value={null}></option>
@@ -261,7 +257,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.spanien)}> {/* Spanien */}
                                 <select 
                                     value={person.spanien === null ? '' : person.spanien}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'spanien')}
                                 >
                                     <option selected value={null}></option>
@@ -271,7 +267,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.kanada)}> {/* Kanada */}
                                 <select 
                                     value={person.kanada === null ? '' : person.kanada}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'kanada')}
                                 >
                                     <option selected value={null}></option>
@@ -281,7 +277,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.österreich)}> {/* Österreich */}
                                 <select 
                                     value={person.österreich === null ? '' : person.österreich}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'österreich')}
                                 >
                                     <option selected value={null}></option>
@@ -291,7 +287,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.england)}> {/* England */}
                                 <select 
                                     value={person.england === null ? '' : person.england}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'england')}
                                 >
                                     <option selected value={null}></option>
@@ -301,7 +297,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.ungarn)}> {/* Ungarn */}
                                 <select 
                                     value={person.ungarn === null ? '' : person.ungarn}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'ungarn')}
                                 >
                                     <option selected value={null}></option>
@@ -311,7 +307,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.belgien)}> {/* Belgien */}
                                 <select 
                                     value={person.belgien === null ? '' : person.belgien}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'belgien')}
                                 >
                                     <option selected value={null}></option>
@@ -321,7 +317,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.niederlande)}> {/* Niederlande */}
                                 <select 
                                     value={person.neiderlande === null ? '' : person.niederlande}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'niederlande')}
                                 >
                                     <option selected value={null}></option>
@@ -331,7 +327,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.singapur)}> {/* Singapur */}
                                 <select 
                                     value={person.singapur === null ? '' : person.singapur}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'singapur')}
                                 >
                                     <option selected value={null}></option>
@@ -341,7 +337,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.japan)}> {/* Japan */}
                                 <select 
                                     value={person.japan === null ? '' : person.japan}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'japan')}
                                 >
                                     <option selected value={null}></option>
@@ -351,7 +347,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.katar)}> {/* Katar */}
                                 <select 
                                     value={person.katar === null ? '' : person.katar}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'katar')}
                                 >
                                     <option selected value={null}></option>
@@ -361,7 +357,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.usa)}> {/* USA */}
                                 <select 
                                     value={person.usa === null ? '' : person.usa}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'usa')}
                                 >
                                     <option selected value={null}></option>
@@ -371,7 +367,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.mexiko)}> {/* Mexiko */}
                                 <select 
                                     value={person.mexiko === null ? '' : person.mexiko}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'mexiko')}
                                 >
                                     <option selected value={null}></option>
@@ -381,7 +377,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.brasilien)}> {/* Brasilien */}
                                 <select 
                                     value={person.brasilien === null ? '' : person.brasilien}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'brasilien')}
                                 >
                                     <option selected value={null}></option>
@@ -391,7 +387,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.lasvegas)}> {/* LasVegas */}
                                 <select 
                                     value={person.lasvegas === null ? '' : person.lasvegas}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'lasvegas')}
                                 >
                                     <option selected value={null}></option>
@@ -401,7 +397,7 @@ function TeilnehmerTabelle() {
                             <td style={getCellStyle(person.abudhabi)}> {/* AbuDhabi */}
                                 <select 
                                     value={person.abudhabi === null ? '' : person.abudhabi}
-                                    disabled={person.id !== userID && adminRights !== "true"}
+                                    disabled={person.id !== userID}
                                     onChange={(e) => handleSelectChange(e, person.id, 'abudhabi')}
                                 >
                                     <option selected value={null}></option>
