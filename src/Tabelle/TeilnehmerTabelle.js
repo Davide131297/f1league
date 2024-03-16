@@ -133,6 +133,19 @@ function TeilnehmerTabelle() {
         console.log('Gesamtpunkte: ', gesamtPunkte);
     };
 
+    function getCellStyle(value) {
+        if (value === 25 || value === 26) {
+            return { backgroundColor: 'gold' };
+        }
+        if (value === 18 || value === 19) {
+            return { backgroundColor: 'silver' };
+        }
+        if (value === 15 || value === 16) {
+            return { backgroundColor: 'peru' };
+        }
+        return { backgroundColor: 'transparent' };
+    }
+
     return (
         <div className='table-container'>
             <ScrollArea type='never' className='scrollarea'>
@@ -173,7 +186,7 @@ function TeilnehmerTabelle() {
                             <td></td> {/* Pos */}
                             <td className='fahrer'>{person.spielerID}</td> {/* Fahrer */}
                             <td>{person.team}</td> {/* Konstrukteur */}
-                            <td> {/* Bahrain */}
+                            <td style={getCellStyle(person.bahrain)}> {/* Bahrain */}
                             <select 
                                 value={person.bahrain === null ? '' : person.bahrain}
                                 disabled={person.id !== userID && adminRights !== "true"}
@@ -184,7 +197,7 @@ function TeilnehmerTabelle() {
                             </select>
 
                             </td>
-                            <td> {/* SaudiArabien */}
+                            <td style={getCellStyle(person.saudiarabien)}> {/* SaudiArabien */}
                                 <select 
                                     value={person.saudiarabien === null ? '' : person.saudiarabien}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -194,7 +207,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* Australien */}
+                            <td style={getCellStyle(person.australien)}> {/* Australien */}
                                 <select 
                                     value={person.australien === null ? '' : person.australien}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -204,7 +217,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* Aserbaidschan */}
+                            <td style={getCellStyle(person.aserbaidschan)}> {/* Aserbaidschan */}
                                 <select 
                                     value={person.aserbaidschan === null ? '' : person.aserbaidschan}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -214,7 +227,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* Miami */}
+                            <td style={getCellStyle(person.miami)}> {/* Miami */}
                                 <select 
                                     value={person.miami === null ? '' : person.miami}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -224,7 +237,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* Italien */}
+                            <td style={getCellStyle(person.italien)}> {/* Italien */}
                                 <select 
                                     value={person.italien === null ? '' : person.italien}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -234,7 +247,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* Monaco */}
+                            <td style={getCellStyle(person.monaco)}> {/* Monaco */}
                                 <select 
                                     value={person.monaco === null ? '' : person.monaco}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -244,7 +257,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* Spanien */}
+                            <td style={getCellStyle(person.spanien)}> {/* Spanien */}
                                 <select 
                                     value={person.spanien === null ? '' : person.spanien}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -254,7 +267,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* Kanada */}
+                            <td style={getCellStyle(person.kanada)}> {/* Kanada */}
                                 <select 
                                     value={person.kanada === null ? '' : person.kanada}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -264,7 +277,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* Österreich */}
+                            <td style={getCellStyle(person.österreich)}> {/* Österreich */}
                                 <select 
                                     value={person.österreich === null ? '' : person.österreich}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -274,7 +287,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* England */}
+                            <td style={getCellStyle(person.england)}> {/* England */}
                                 <select 
                                     value={person.england === null ? '' : person.england}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -284,7 +297,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* Ungarn */}
+                            <td style={getCellStyle(person.ungarn)}> {/* Ungarn */}
                                 <select 
                                     value={person.ungarn === null ? '' : person.ungarn}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -294,7 +307,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* Belgien */}
+                            <td style={getCellStyle(person.belgien)}> {/* Belgien */}
                                 <select 
                                     value={person.belgien === null ? '' : person.belgien}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -304,7 +317,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* Niederlande */}
+                            <td style={getCellStyle(person.niederlande)}> {/* Niederlande */}
                                 <select 
                                     value={person.neiderlande === null ? '' : person.niederlande}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -314,7 +327,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* Singapur */}
+                            <td style={getCellStyle(person.singapur)}> {/* Singapur */}
                                 <select 
                                     value={person.singapur === null ? '' : person.singapur}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -324,7 +337,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* Japan */}
+                            <td style={getCellStyle(person.japan)}> {/* Japan */}
                                 <select 
                                     value={person.japan === null ? '' : person.japan}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -334,7 +347,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* Katar */}
+                            <td style={getCellStyle(person.katar)}> {/* Katar */}
                                 <select 
                                     value={person.katar === null ? '' : person.katar}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -344,7 +357,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* USA */}
+                            <td style={getCellStyle(person.usa)}> {/* USA */}
                                 <select 
                                     value={person.usa === null ? '' : person.usa}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -354,7 +367,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* Mexiko */}
+                            <td style={getCellStyle(person.mexiko)}> {/* Mexiko */}
                                 <select 
                                     value={person.mexiko === null ? '' : person.mexiko}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -364,7 +377,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* Brasilien */}
+                            <td style={getCellStyle(person.brasilien)}> {/* Brasilien */}
                                 <select 
                                     value={person.brasilien === null ? '' : person.brasilien}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -374,7 +387,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* LasVegas */}
+                            <td style={getCellStyle(person.lasvegas)}> {/* LasVegas */}
                                 <select 
                                     value={person.lasvegas === null ? '' : person.lasvegas}
                                     disabled={person.id !== userID && adminRights !== "true"}
@@ -384,7 +397,7 @@ function TeilnehmerTabelle() {
                                     {punkte.map((punkt, i) => <option key={i} value={punkt}>{punkt}</option>)}
                                 </select>
                             </td>
-                            <td> {/* AbuDhabi */}
+                            <td style={getCellStyle(person.abudhabi)}> {/* AbuDhabi */}
                                 <select 
                                     value={person.abudhabi === null ? '' : person.abudhabi}
                                     disabled={person.id !== userID && adminRights !== "true"}
