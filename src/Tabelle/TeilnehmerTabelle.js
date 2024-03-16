@@ -45,6 +45,7 @@ function TeilnehmerTabelle() {
                     ...doc.data() // Hier werden alle Attribute des Dokuments abgerufen
                 });
             });
+            tempListe.sort((a, b) => b.gesamtPunkte - a.gesamtPunkte);
             setPersonen(tempListe);
         });
 
@@ -183,7 +184,7 @@ function TeilnehmerTabelle() {
                         <tbody>
                         {personen.map((person, index) => (
                         <tr key={index}>
-                            <td></td> {/* Pos */}
+                            <td>{index + 1}</td> {/* Pos */}
                             <td className='fahrer'>{person.spielerID}</td> {/* Fahrer */}
                             <td>{person.team}</td> {/* Konstrukteur */}
                             <td style={getCellStyle(person.bahrain)}> {/* Bahrain */}
