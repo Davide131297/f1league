@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { SimpleGrid } from '@mantine/core';
+import { ScrollArea, SimpleGrid } from '@mantine/core';
 import {
     Card,
     Image,
@@ -10,7 +10,7 @@ import classes from'./Profil.css';
 import f1helm from './f1helm.jpeg';
 import { db } from '../utils/firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
-
+import Profiltabelle from './Profiltabelle';
 
 const Profil = () => {
     let { id } = useParams();
@@ -90,11 +90,7 @@ const Profil = () => {
 
     return (
         <React.Fragment>
-            <div>
-                <h1>Test</h1>
-                <p>ID: {id}</p>
-                {person && <p>Fahrer: {person.spielerID}</p>}
-            </div>
+
             <SimpleGrid cols={2} spacing="sm">
 
                 <div id='links'>
@@ -121,7 +117,7 @@ const Profil = () => {
                                 <Rating value={value} onChange={(newValue) => {
                                     if (angemeldeterUserID) {
                                         setValue(newValue);
-                                        setUserRating(newValue); // Aktualisieren Sie userRating, wenn der Benutzer eine Bewertung abgibt
+                                        setUserRating(newValue); // Aktualisiert userRating, wenn der Benutzer eine Bewertung abgibt
                                     } else {
                                         alert('Bitte melde dich an, um eine Bewertung abzugeben.');
                                     }
@@ -131,7 +127,7 @@ const Profil = () => {
                 </div>
 
                 <div id='rechts'>
-                    2
+                    <Profiltabelle person={person} />
                 </div>
             </SimpleGrid>
         </React.Fragment>
