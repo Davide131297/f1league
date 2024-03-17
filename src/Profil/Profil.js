@@ -16,6 +16,9 @@ const Profil = () => {
     let { id } = useParams();
     const [person, setPerson] = useState(null);
     const [value, setValue] = useState(0);
+    const [angemeldeterUserID, setAngemeldeterUserID] = useState(null);
+    const [userRating, setUserRating] = useState(null);
+
 
     //Auslesen der Daten aus der Datenbank
     useEffect(() => {
@@ -23,8 +26,10 @@ const Profil = () => {
             const docRef = doc(db, 'personen', id);
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
-                setPerson(docSnap.data());
-                console.log("Document data:", docSnap.data());
+                const personData = docSnap.data();
+                setPerson(personData);
+                setValue(personData.bewertung || 0); // Setzen den Wert auf person.bewertung, wenn es existiert, sonst auf 0
+                console.log("Document data:", personData);
             } else {
                 console.log("Kein solches Dokument!");
             }
@@ -40,19 +45,48 @@ const Profil = () => {
     //Aktualisierung der Bewertung in der Datenbank
     useEffect(() => {
         const updateRating = async () => {
+            if (userRating === null) return; // Führen Sie den Code nur aus, wenn der Benutzer eine Bewertung abgegeben hat
+    
             const docRef = doc(db, 'personen', id);
-            await updateDoc(docRef, {
-                bewertung: value
-            });
+            const docSnap = await getDoc(docRef);
+    
+            if (docSnap.exists() && angemeldeterUserID && person) {
+                const data = docSnap.data();
+                const newRatings = {...(data.bewertungen || {}), [angemeldeterUserID]: userRating};
+                const averageRating = Object.values(newRatings).reduce((a, b) => a + b, 0) / Object.values(newRatings).length;
+    
+                await updateDoc(docRef, {
+                    bewertung: averageRating,
+                    bewertungen: newRatings
+                });
+    
+                const userDocRef = doc(db, 'personen', angemeldeterUserID);
+                await updateDoc(userDocRef, {
+                    [`bewertet.${person.spielerID}`]: userRating
+                });
+            }
         };
         updateRating();
-    }, [value, id]);
+    }, [userRating, id, angemeldeterUserID, person]); // Abhängigkeit von userRating statt value
 
+    //Ausgabe der Bewertung aus der Datenbank
     useEffect(() => {
         if (person && person.bewertung) {
             console.log(`Die Bewertung aus der Datenbank ist ${person.bewertung}.`);
         }
     }, [person]);
+
+    //Auslesen der ID des angemeldeten Users
+    useEffect(() => {
+        const cookies = document.cookie.split(';');
+        cookies.forEach(cookie => {
+            const [name, value] = cookie.split('=');
+            if (name.trim() === 'userID') {
+                setAngemeldeterUserID(value);
+                console.log(`Die ID des angemeldeten Users ist ${value}.`);
+            }
+        });
+    }, []);
 
     return (
         <React.Fragment>
@@ -84,7 +118,14 @@ const Profil = () => {
                             <span id='fahrerbewertung'>
                             Fahrer bewerten
                             </span>
-                            <Rating value={value} onChange={setValue} />
+                                <Rating value={value} onChange={(newValue) => {
+                                    if (angemeldeterUserID) {
+                                        setValue(newValue);
+                                        setUserRating(newValue); // Aktualisieren Sie userRating, wenn der Benutzer eine Bewertung abgibt
+                                    } else {
+                                        alert('Bitte melde dich an, um eine Bewertung abzugeben.');
+                                    }
+                                }} />
                         </Card.Section>
                     </Card>
                 </div>
