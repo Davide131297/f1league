@@ -145,8 +145,8 @@ function TeilnehmerTabelle() {
         return { backgroundColor: 'transparent' };
     }
 
-    const handleClick = (id) => {
-        navigate(`/f1league/profil/${id}`);
+    const handleClick = (name) => {
+        navigate(`/f1league/profil/${name}`);
     }
 
     return (
@@ -187,7 +187,7 @@ function TeilnehmerTabelle() {
                         {personen.map((person, index) => (
                         <tr key={index}>
                             <td>{index + 1}</td> {/* Pos */}
-                            <td className='fahrer' onClick={() => handleClick(person.id)}>{person.spielerID}</td> {/* Fahrer */}
+                            <td className='fahrer' onClick={() => handleClick(person.spielerID)}>{person.spielerID}</td> {/* Fahrer */}
                             <td>{person.team}</td> {/* Konstrukteur */}
                             <td style={getCellStyle(person.bahrain)}> {/* Bahrain */}
                             <select 
