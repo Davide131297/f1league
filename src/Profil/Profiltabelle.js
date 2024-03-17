@@ -19,15 +19,36 @@ import Mexiko from './../Flaggen/mexico.png';
 import Brasilien from './../Flaggen/brasilien.png';
 import AbuDhabi from './../Flaggen/abudhabi.png';
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import { db } from './../utils/firebase';
+import {onSnapshot, doc} from 'firebase/firestore';
+import { useParams } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import './Profiltabelle.css';
 
-const Profiltabelle = (person) => {
-    // Definieren Sie die Überschriften und die entsprechenden Werte
+const Profiltabelle = () => {
+
+    const [person, setPersonen] = useState([]);
+    const { id } = useParams(); // Extrahieren Sie die ID aus der URL
+
+    useEffect(() => {
+        const personenRef = doc(db, 'personen', id); // Verwenden Sie die ID, um auf das spezifische Dokument zuzugreifen
+        const unsubscribe = onSnapshot(personenRef, (doc) => {
+            if (doc.exists()) {
+                setPersonen({ id: doc.id, ...doc.data() }); // Aktualisieren Sie den Zustand mit den Daten des Dokuments
+            } else {
+                console.log('Kein solches Dokument!');
+            }
+        });
+
+        // Aufräumen bei Unmount
+        return () => unsubscribe();
+    }, [id]); // Fügen Sie die ID als Abhängigkeit hinzu, um den Effekt erneut auszulösen, wenn sich die ID ändert
+
+    //Überschriften und die entsprechenden Werte
     const data = [
         {header: <img src={Bahrain} alt="Bahrain" className='img-size'/>, value: person.bahrain || 0},
-        {header: <img src={SaudiArabien} alt="SaudiArabien" className='img-size'/>, value: person.saudiArabien || 0},
+        {header: <img src={SaudiArabien} alt="SaudiArabien" className='img-size'/>, value: person.saudiarabien || 0},
         {header: <img src={Australien} alt="Australien" className='img-size'/>, value: person.australien || 0},
         {header: <img src={Aserbaidschan} alt="Aserbeidschan" className='img-size'/>, value: person.aserbaidschan || 0},
         {header: <img src={USA} alt="Miami" className='img-size'/>, value: person.miami || 0},
@@ -46,8 +67,8 @@ const Profiltabelle = (person) => {
         {header: <img src={USA} alt="USA" className='img-size'/>, value: person.usa || 0},
         {header: <img src={Mexiko} alt="Mexiko" className='img-size'/>, value: person.mexiko || 0},
         {header: <img src={Brasilien} alt="Brasilien" className='img-size'/>, value: person.brasilien || 0},
-        {header: <img src={USA} alt="LasVegas" className='img-size'/>, value: person.lasVegas || 0},
-        {header: <img src={AbuDhabi} alt="AbuDhabi" className='img-size'/>, value: person.abuDhabi || 0},
+        {header: <img src={USA} alt="LasVegas" className='img-size'/>, value: person.lasvegas || 0},
+        {header: <img src={AbuDhabi} alt="AbuDhabi" className='img-size'/>, value: person.abudhabi || 0},
         {header: 'Gesamtpunkte', value: person.gesamtPunkte || 0}
     ];
 
