@@ -7,6 +7,8 @@ import { Button } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal';
 import Registrierung from "../Registrierung/Registrierung";
 import CloseButton from 'react-bootstrap/CloseButton';
+import { useNavigate } from 'react-router-dom';
+
 
 const getCookie = (name) => {
     const value = "; " + document.cookie;
@@ -20,6 +22,8 @@ const Header = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [isAuthenticated, setIsAuthenticated] = useState(getCookie('userID') ? true : false);
+    const navigate = useNavigate();
+
     
     const handleLogout = () => {
         const confirmLogout = window.confirm("Möchtest du dich wirklich ausloggen?");
@@ -40,9 +44,10 @@ const Header = () => {
                             src={LigaLogo}
                             width="80"
                             height="80"
-                            className="d-inline-block align-top"
+                            className="d-inline-block align-top logo"
+                            onClick={() => navigate('/f1league')}
                         />{' '}
-                        <span className="title">Int-Legendz F1 Liga</span>
+                        <span className="title" onClick={() => navigate('/f1league')}>Int-Legendz F1 Liga</span>
                     </Navbar.Brand>
                     <Navbar.Collapse className="justify-content-end">
                         {isAuthenticated === false ? 

@@ -9,6 +9,7 @@
 
 .title {
     color: white;
+    cursor: pointer;
 }
 
 .navbar-brand {
@@ -26,4 +27,8 @@
 
 .closeButton {
    margin-left: auto;
+}
+
+.logo {
+    cursor: pointer;
 }
