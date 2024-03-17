@@ -4,6 +4,7 @@ import { collection, onSnapshot, doc, updateDoc, getDoc } from 'firebase/firesto
 import Table from 'react-bootstrap/Table';
 import './TeilnehmerTabelle.css';
 import { ScrollArea } from '@mantine/core';
+import {useNavigate} from 'react-router-dom';
 // Flaggen
 import Bahrain from './../Flaggen/bahrain.png';
 import SaudiArabien from './../Flaggen/saudiarabien.png';
@@ -32,6 +33,7 @@ import AbuDhabi from './../Flaggen/abudhabi.png';
 function TeilnehmerTabelle() {
     const [personen, setPersonen] = useState([]);
     const [userID, setUserID] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const personenRef = collection(db, 'personen');
@@ -143,6 +145,10 @@ function TeilnehmerTabelle() {
         return { backgroundColor: 'transparent' };
     }
 
+    const handleClick = (id) => {
+        navigate(`/f1league/profil/${id}`);
+    }
+
     return (
         <div className='table-container'>
             <ScrollArea type='never' className='scrollarea'>
@@ -181,7 +187,7 @@ function TeilnehmerTabelle() {
                         {personen.map((person, index) => (
                         <tr key={index}>
                             <td>{index + 1}</td> {/* Pos */}
-                            <td className='fahrer'>{person.spielerID}</td> {/* Fahrer */}
+                            <td className='fahrer' onClick={() => handleClick(person.id)}>{person.spielerID}</td> {/* Fahrer */}
                             <td>{person.team}</td> {/* Konstrukteur */}
                             <td style={getCellStyle(person.bahrain)}> {/* Bahrain */}
                             <select 

@@ -1,21 +1,16 @@
 import React from 'react';
-import Header from './header/header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@mantine/core/styles.css';
-import './App.css';
-import Teilnehmerliste from './Tabelle/TeilnehmerTabelle';
-import Popup from './Popup/Popup';
+import { MantineProvider } from '@mantine/core';
+import { Router } from './Router';
 
 function App() {
 
   return (
-    <React.Fragment>
-      <div className="app">
-        <Header />
-        <Popup />
-        <Teilnehmerliste />
-      </div>
-    </React.Fragment>
+    <MantineProvider>
+    <Router />
+    </MantineProvider>
+
   );
 }
 
