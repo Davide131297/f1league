@@ -12,6 +12,17 @@ import { db } from '../utils/firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import Profiltabelle from './Profiltabelle';
 
+import AlfaRomeo from './../Teamlogos/AlfaRomeo.png';
+import Alpine from './../Teamlogos/Alpine.png';
+import AstonMartin from './../Teamlogos/AstonMartin.png';
+import Ferrari from './../Teamlogos/Ferrari.png';
+import Haas from './../Teamlogos/Haas.png';
+import McLaren from './../Teamlogos/Mclaren.png';
+import Mercedes from './../Teamlogos/Mercedes.png';
+import RedBull from './../Teamlogos/RedBull.png';
+import Williams from './../Teamlogos/Williams.png';
+import AlphaTauri from './../Teamlogos/AlphaTauri.png';
+
 const Profil = () => {
     let { id } = useParams();
     const [person, setPerson] = useState(null);
@@ -19,6 +30,18 @@ const Profil = () => {
     const [angemeldeterUserID, setAngemeldeterUserID] = useState(null);
     const [userRating, setUserRating] = useState(null);
 
+    const teamLogos = {
+        'Alfa Romeo': AlfaRomeo,
+        'Alpine': Alpine,
+        'Aston Martin': AstonMartin,
+        'Ferrari': Ferrari,
+        'Haas': Haas,
+        'McLaren': McLaren,
+        'Mercedes': Mercedes,
+        'Red Bull': RedBull,
+        'Williams': Williams,
+        'AlphaTauri': AlphaTauri
+    };
 
     //Auslesen der Daten aus der Datenbank
     useEffect(() => {
@@ -130,6 +153,14 @@ const Profil = () => {
                     <Profiltabelle person={person} />
                 </div>
             </SimpleGrid>
+
+            {person && person.team && (
+            <div id='teamlogo'>
+                <img src={teamLogos[person.team]} alt={person.team} style={{width: '300px', height: '300px', objectFit: 'contain'}} />
+            </div>
+        )}
+
+
         </React.Fragment>
     );
 };

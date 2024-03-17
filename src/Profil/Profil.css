@@ -38,3 +38,10 @@
     font-size: 1.0rem;
     font-weight: 300;
 }
+
+#teamlogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
