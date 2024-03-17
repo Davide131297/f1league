@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { Button } from "react-bootstrap";
-import Feieremoji from './feier.png';
+import MerkelGif from './merkel-party.gif';
 
 const Popup = () => {
     const [showPopup, setShowPopup] = useState(true);
 
     useEffect(() => {
-        const popupShown = document.cookie.split('; ').find(row => row.startsWith('popupShown'));
+        const popupShown = document.cookie.split('; ').find(row => row.startsWith('popupNewFeatures='));
         if (popupShown) {
             setShowPopup(false);
         }
     }, []);
 
     const handleClose = () => {
-        document.cookie = "popupShown=true; max-age=86400"; // Setzt das Cookie für 24 Stunden
+        document.cookie = "popupNewFeatures=true"; // Setzt das Cookie ohne Ablaufdatum
         setShowPopup(false);
     };
 
@@ -26,11 +26,16 @@ const Popup = () => {
                         <div className="popup">
                             <h3><span role="img" aria-label="party" style={{fontSize: '30px'}}>🎉</span>Neuerungen auf der Webseite</h3>
                             <ul>
-                                <li>Die Tabelle wird nun automatisch anhand der Gesamtpunkte sortiert</li>
                                 <li>Gewinner wird im Punktebereich gold hinterlegt</li>
                                 <li>Zweitplatzierter wird im Punktebereich silber hinterlegt</li>
                                 <li>Drittplazierter wird im Punktebereich bronze hinterlegt</li>
+                                <li>Klicke auf den Namen der Fahrer um auf ihre Fahrerseite zu gelangen</li>
+                                <li>Die Fahrerseite zeigt dir die bisherigen Ergebnisse des Fahrers</li>
+                                <li>Bewerte den Fahrer (Bewertung mittels Sternen von 1 bis 5)</li>
                             </ul>
+                            <div style={{textAlign: 'center'}}>
+                                <img src={MerkelGif} alt="Merkel Party" style={{maxHeight: '300px', width: 'auto'}} />
+                            </div>
                             <div style={{textAlign: 'right'}}>
                                 <Button onClick={handleClose} variant="success">Alles klar!</Button>
                             </div>
