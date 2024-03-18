@@ -34,7 +34,7 @@ const Popup = () => {
                                 <li>Bewerte den Fahrer (Bewertung mittels Sternen von 1 bis 5)</li>
                             </ul>
                             <div style={{textAlign: 'center'}}>
-                                <img src={MerkelGif} alt="Merkel Party" style={{maxHeight: '300px', width: 'auto'}} />
+                                <img src={MerkelGif} alt="Merkel Party" style={{maxHeight: '200px', width: 'auto'}} />
                             </div>
                             <div style={{textAlign: 'right'}}>
                                 <Button onClick={handleClose} variant="success">Alles klar!</Button>
