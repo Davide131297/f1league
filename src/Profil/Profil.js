@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { ScrollArea, SimpleGrid } from '@mantine/core';
+import { SimpleGrid } from '@mantine/core';
 import {
     Card,
     Image,
@@ -111,6 +111,19 @@ const Profil = () => {
         });
     }, []);
 
+    const teamColors = {
+        'Ferrari': 'red',
+        'Mercedes': '#788086',
+        'McLaren': '#fc8404',
+        'Red Bull': 'darkblue',
+        'Alpine': '#041c2c',
+        'AlphaTauri': '#040505',
+        'Aston Martin': 'green',
+        'Alfa Romeo': 'red',
+        'Haas': 'red',
+        'Williams': '#049cdc'
+    };
+
     return (
         <React.Fragment>
 
@@ -126,25 +139,29 @@ const Profil = () => {
                         </Card.Section>
 
                         <Card.Section>
-                            {person && <span id="spielername">{person.spielerID}</span>}
-                            <br></br>
-                            {person && <span id="spielerinfos">Team: {person.team}</span>}
-                            <br></br>
-                            {person && <span id="spielerinfos">Punkte: {person.gesamtPunkte}</span>}
+                            <div className='profildaten'>
+                                {person && <span id="spielername" style={{color: teamColors[person.team]}}>{person.spielerID}</span>}
+                                <br></br>
+                                {person && <span id="spielerinfos">Team: {person.team}</span>}
+                                <br></br>
+                                {person && <span id="spielerinfos">Punkte: {person.gesamtPunkte}</span>}
+                            </div>
                         </Card.Section>
 
                         <Card.Section className={classes.footer}>
-                            <span id='fahrerbewertung'>
-                            Fahrer bewerten
-                            </span>
-                                <Rating value={value} onChange={(newValue) => {
-                                    if (angemeldeterUserID) {
-                                        setValue(newValue);
-                                        setUserRating(newValue); // Aktualisiert userRating, wenn der Benutzer eine Bewertung abgibt
-                                    } else {
-                                        alert('Bitte melde dich an, um eine Bewertung abzugeben.');
-                                    }
-                                }} />
+                            <div className='profildaten'>
+                                <span id='fahrerbewertung'>
+                                Fahrer bewerten
+                                </span>
+                                    <Rating value={value} onChange={(newValue) => {
+                                        if (angemeldeterUserID) {
+                                            setValue(newValue);
+                                            setUserRating(newValue); // Aktualisiert userRating, wenn der Benutzer eine Bewertung abgibt
+                                        } else {
+                                            alert('Bitte melde dich an, um eine Bewertung abzugeben.');
+                                        }
+                                    }} />
+                            </div>
                         </Card.Section>
                     </Card>
                 </div>
