@@ -8,7 +8,7 @@ import Modal from 'react-bootstrap/Modal';
 import Registrierung from "../Registrierung/Registrierung";
 import CloseButton from 'react-bootstrap/CloseButton';
 import { useNavigate } from 'react-router-dom';
-
+import Zufallsgenerator from "../Zufallsgenerator/Zufallsgenerator";
 
 const getCookie = (name) => {
     const value = "; " + document.cookie;
@@ -68,6 +68,8 @@ const Header = () => {
                     <Registrierung setShow={setShow} setIsAuthenticated={setIsAuthenticated}/>
                 </Modal.Body>
             </Modal>
+
+            <Zufallsgenerator />
         </>
     );
 };
