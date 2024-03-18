@@ -24,14 +24,17 @@
 }
 
 #spielername {
-    font-size: 1.5rem;
-    font-weight: 600;
+    max-width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1em;
+    font-weight: bold;
 }
 
 #spielerinfos {
     font-size: 1.0rem;
     font-weight: 300;
-
 }
 
 #fahrerbewertung {
