@@ -53,11 +53,11 @@ const Zufallsgenerator = () => {
         "Ferrari", 
         "McLaren", 
         "Aston Martin", 
-        "Alpine", 
-        "AlphaTauri", 
-        "Alfa Romeo", 
+       // "Alpine", 
+       // "AlphaTauri", 
+       // "Alfa Romeo", 
         "Williams", 
-        "Haas"
+       // "Haas"
     ];
 
     const generateRandomTeam = () => {

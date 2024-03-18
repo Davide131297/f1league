@@ -31,16 +31,16 @@ const Profil = () => {
     const [userRating, setUserRating] = useState(null);
 
     const teamLogos = {
-        'Alfa Romeo': AlfaRomeo,
-        'Alpine': Alpine,
+      //  'Alfa Romeo': AlfaRomeo,
+      //  'Alpine': Alpine,
         'Aston Martin': AstonMartin,
         'Ferrari': Ferrari,
-        'Haas': Haas,
+       // 'Haas': Haas,
         'McLaren': McLaren,
         'Mercedes': Mercedes,
         'Red Bull': RedBull,
         'Williams': Williams,
-        'AlphaTauri': AlphaTauri
+      //  'AlphaTauri': AlphaTauri
     };
 
     //Auslesen der Daten aus der Datenbank

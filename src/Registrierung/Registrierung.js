@@ -20,11 +20,11 @@ function Registrierung({ setShow, setIsAuthenticated }) {
     "Ferrari",
     "McLaren",
     "Aston Martin",
-    "Alpine",
-    "AlphaTauri",
-    "Alfa Romeo",
+   // "Alpine",
+   // "AlphaTauri",
+   // "Alfa Romeo",
     "Williams",
-    "Haas"
+   // "Haas"
   ];
 
 
