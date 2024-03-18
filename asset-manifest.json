@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/f1league/static/css/main.13014a71.css",
-    "main.js": "/f1league/static/js/main.45a3adae.js",
+    "main.css": "/f1league/static/css/main.15636ad7.css",
+    "main.js": "/f1league/static/js/main.cd4a79d9.js",
     "static/js/453.916ec20e.chunk.js": "/f1league/static/js/453.916ec20e.chunk.js",
     "static/media/merkel-party.gif": "/f1league/static/media/merkel-party.98ee41efd5814c3c04a7.gif",
     "static/media/LigaLogo.jpg": "/f1league/static/media/LigaLogo.49e788c274b2fe2cdee7.jpg",
@@ -16,12 +16,12 @@
     "static/media/Haas.png": "/f1league/static/media/Haas.50eb9195ad89c912db37.png",
     "static/media/Alpine.png": "/f1league/static/media/Alpine.8f9d89dccf3c302e4023.png",
     "index.html": "/f1league/index.html",
-    "main.13014a71.css.map": "/f1league/static/css/main.13014a71.css.map",
-    "main.45a3adae.js.map": "/f1league/static/js/main.45a3adae.js.map",
+    "main.15636ad7.css.map": "/f1league/static/css/main.15636ad7.css.map",
+    "main.cd4a79d9.js.map": "/f1league/static/js/main.cd4a79d9.js.map",
     "453.916ec20e.chunk.js.map": "/f1league/static/js/453.916ec20e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.13014a71.css",
-    "static/js/main.45a3adae.js"
+    "static/css/main.15636ad7.css",
+    "static/js/main.cd4a79d9.js"
   ]
 }
