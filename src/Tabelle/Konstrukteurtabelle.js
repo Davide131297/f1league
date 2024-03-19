@@ -78,7 +78,7 @@ const Konstrukteurtabelle = () => {
             const updatedTeamPunkte = {};
             for (const team in gruppiertePersonen) {
                 const bahrainPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.bahrain;
+                    return sum + (isNaN(person.bahrain) ? 0 : person.bahrain);
                 }, 0);
                 updatedTeamPunkte[team] = bahrainPunkte;
             }
@@ -88,7 +88,7 @@ const Konstrukteurtabelle = () => {
             const saudiArabienPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.saudiArabien;
+                    return sum + (isNaN(person.saudiArabien) ? 0 : person.saudiArabien);
                 }, 0);
                 saudiArabienPunkte[team] = teamPunkte;
             }
@@ -98,7 +98,7 @@ const Konstrukteurtabelle = () => {
             const australienPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.australien;
+                    return sum + (isNaN(person.australien) ? 0 : person.australien);
                 }, 0);
                 australienPunkte[team] = teamPunkte;
             }
@@ -108,7 +108,7 @@ const Konstrukteurtabelle = () => {
             const aserbaidschanPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.aserbaidschan;
+                    return sum + (isNaN(person.aserbaidschan) ? 0 : person.aserbaidschan);
                 }, 0);
                 aserbaidschanPunkte[team] = teamPunkte;
             }
@@ -118,7 +118,7 @@ const Konstrukteurtabelle = () => {
             const miamiPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.miami;
+                    return sum + (isNaN(person.miami) ? 0 : person.miami);
                 }, 0);
                 miamiPunkte[team] = teamPunkte;
             }
@@ -128,7 +128,7 @@ const Konstrukteurtabelle = () => {
             const italienPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.italien;
+                    return sum + (isNaN(person.italien) ? 0 : person.italien);
                 }, 0);
                 italienPunkte[team] = teamPunkte;
             }
@@ -138,7 +138,7 @@ const Konstrukteurtabelle = () => {
             const monacoPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.monaco;
+                    return sum + (isNaN(person.monaco) ? 0 : person.monaco);
                 }, 0);
                 monacoPunkte[team] = teamPunkte;
             }
@@ -148,7 +148,7 @@ const Konstrukteurtabelle = () => {
             const spanienPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.spanien;
+                    return sum + (isNaN(person.spanien) ? 0 : person.spanien);
                 }, 0);
                 spanienPunkte[team] = teamPunkte;
             }
@@ -158,7 +158,7 @@ const Konstrukteurtabelle = () => {
             const kanadaPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.kanada;
+                    return sum + (isNaN(person.kanada) ? 0 : person.kanada);
                 }, 0);
                 kanadaPunkte[team] = teamPunkte;
             }
@@ -168,7 +168,7 @@ const Konstrukteurtabelle = () => {
             const österreichPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.österreich;
+                    return sum + (isNaN(person.österreich) ? 0 : person.österreich);
                 }, 0);
                 österreichPunkte[team] = teamPunkte;
             }
@@ -178,7 +178,7 @@ const Konstrukteurtabelle = () => {
             const englandPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.england;
+                    return sum + (isNaN(person.england) ? 0 : person.england);
                 }, 0);
                 englandPunkte[team] = teamPunkte;
             }
@@ -188,7 +188,7 @@ const Konstrukteurtabelle = () => {
             const ungarnPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.ungarn;
+                    return sum + (isNaN(person.ungarn) ? 0 : person.ungarn);
                 }, 0);
                 ungarnPunkte[team] = teamPunkte;
             }
@@ -198,7 +198,7 @@ const Konstrukteurtabelle = () => {
             const belgienPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.belgien;
+                    return sum + (isNaN(person.belgien) ? 0 : person.belgien);
                 }, 0);
                 belgienPunkte[team] = teamPunkte;
             }
@@ -208,7 +208,7 @@ const Konstrukteurtabelle = () => {
             const niederlandePunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.niederlande;
+                    return sum + (isNaN(person.niederlande) ? 0 : person.niederlande);
                 }, 0);
                 niederlandePunkte[team] = teamPunkte;
             }
@@ -218,7 +218,7 @@ const Konstrukteurtabelle = () => {
             const singapurPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.singapur;
+                    return sum + (isNaN(person.singapur) ? 0 : person.singapur);
                 }, 0);
                 singapurPunkte[team] = teamPunkte;
             }
@@ -228,7 +228,7 @@ const Konstrukteurtabelle = () => {
             const japanPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.japan;
+                    return sum + (isNaN(person.japan) ? 0 : person.japan);
                 }, 0);
                 japanPunkte[team] = teamPunkte;
             }
@@ -238,7 +238,7 @@ const Konstrukteurtabelle = () => {
             const katarPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.katar;
+                    return sum + (isNaN(person.katar) ? 0 : person.katar);
                 }, 0);
                 katarPunkte[team] = teamPunkte;
             }
@@ -248,7 +248,7 @@ const Konstrukteurtabelle = () => {
             const usaPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.usa;
+                    return sum + (isNaN(person.usa) ? 0 : person.usa);
                 }, 0);
                 usaPunkte[team] = teamPunkte;
             }
@@ -258,7 +258,7 @@ const Konstrukteurtabelle = () => {
             const mexikoPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.mexiko;
+                    return sum + (isNaN(person.mexiko) ? 0 : person.mexiko);
                 }, 0);
                 mexikoPunkte[team] = teamPunkte;
             }
@@ -268,7 +268,7 @@ const Konstrukteurtabelle = () => {
             const brasilienPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.brasilien;
+                    return sum + (isNaN(person.brasilien) ? 0 : person.brasilien);
                 }, 0);
                 brasilienPunkte[team] = teamPunkte;
             }
@@ -278,7 +278,7 @@ const Konstrukteurtabelle = () => {
             const lasVegasPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.lasvegas;
+                    return sum + (isNaN(person.lasVegas) ? 0 : person.lasVegas);
                 }, 0);
                 lasVegasPunkte[team] = teamPunkte;
             }
@@ -288,7 +288,7 @@ const Konstrukteurtabelle = () => {
             const abuDhabiPunkte = {};
             for (const team in gruppiertePersonen) {
                 const teamPunkte = gruppiertePersonen[team].reduce((sum, person) => {
-                    return sum + person.abudhabi;
+                    return sum + (isNaN(person.abuDhabi) ? 0 : person.abuDhabi);
                 }, 0);
                 abuDhabiPunkte[team] = teamPunkte;
             }
