@@ -1,0 +1,12 @@
+.sticky-konstrukteur {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0px;
+}
+
+#sticky-konstrukteur {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0px;
+    z-index: 9999;
+}

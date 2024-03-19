@@ -3,6 +3,7 @@ import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from './../utils/firebase';
 import Table from 'react-bootstrap/Table';
 import { ScrollArea } from '@mantine/core';
+import './konstrukteurtabelle.css';
 // Flaggen
 import Bahrain from './../Flaggen/bahrain.png';
 import SaudiArabien from './../Flaggen/saudiarabien.png';
@@ -310,7 +311,7 @@ const Konstrukteurtabelle = () => {
                 <Table striped bordered hover>
                     <thead className='thead-sticky'>
                         <tr>
-                            <th>Konstrukteur</th>
+                            <th id='sticky-konstrukteur'>Konstrukteur</th>
                             <th><img src={Bahrain} alt="Bahrain" className='img-size'/></th>
                             <th><img src={SaudiArabien} alt="SaudiArabien" className='img-size'/></th>
                             <th><img src={Australien} alt="Australien" className='img-size'/></th>
@@ -340,7 +341,7 @@ const Konstrukteurtabelle = () => {
                         {
                             ["Mercedes", "Ferrari", "Red Bull", "McLaren", "Williams", "Aston Martin"].map((team) => (
                                 <tr>
-                                    <td>{team}</td>
+                                    <td className='sticky-konstrukteur'>{team}</td>
                                     <td>{isNaN(bahrain[team]) ? '' : bahrain[team]}</td>
                                     <td>{isNaN(saudiArabien[team]) ? '' : saudiArabien[team]}</td>
                                     <td>{isNaN(australien[team]) ? '' : australien[team]}</td>
