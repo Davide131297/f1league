@@ -39,6 +39,7 @@
 
 .offcanvas-custom {
     width: 30vh !important;
+    top: 80px !important;
 }
 
 .panel-custom {
@@ -47,5 +48,19 @@
 }
 
 .tab-custom {
-    font-size: 1.1em;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: x-large;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .tab-custom {
+        font-size: small;
+    }
+    
 }

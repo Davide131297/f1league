@@ -12,7 +12,6 @@ import Zufallsgenerator from "../Zufallsgenerator/Zufallsgenerator";
 import { useDisclosure } from '@mantine/hooks';
 import { Burger } from '@mantine/core';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { Tabs } from '@mantine/core';
 
 const getCookie = (name) => {
     const value = "; " + document.cookie;
@@ -41,10 +40,12 @@ const Header = () => {
     };
 
     const navigateKonstrukteurstabelle = () => {
+        toggle();
         navigate('/f1league/konstrukteure');
     };
 
     const navigateFahrertabelle = () => {
+        toggle();
         navigate('/f1league');
     };
 
@@ -74,20 +75,12 @@ const Header = () => {
                 </Container>
             </Navbar>
 
-            <Offcanvas show={opened} onHide={toggle} className="offcanvas-custom">
-                <Offcanvas.Header closeButton>
-                <Offcanvas.Title>F1 Liga</Offcanvas.Title>
-                </Offcanvas.Header>
+            <Offcanvas show={opened} onHide={toggle}className="offcanvas-custom">
                 <Offcanvas.Body className="offcanvas-body">
-                <Tabs defaultValue="Fahrertabelle" orientation="vertical">
-                    <Tabs.List>
-                        <Tabs.Tab className="tab-custom" value="Fahrertabelle" onClick={navigateFahrertabelle}>Fahrertabelle</Tabs.Tab>
-                        <Tabs.Tab className="tab-custom" value="Konstrukteurstabelle" onClick={navigateKonstrukteurstabelle}>Konstrukteurstabelle</Tabs.Tab>
-                    </Tabs.List>
-
-                    <Tabs.Panel value="Fahrertabelle" />
-                    <Tabs.Panel value="Konstrukteurstabelle" />
-                    </Tabs>
+                    <ul>
+                        <li className="tab-custom" onClick={navigateFahrertabelle}>Fahrertabelle</li>
+                        <li className="tab-custom" onClick={navigateKonstrukteurstabelle}>Konstrukteurstabelle</li>
+                    </ul>
                 </Offcanvas.Body>
             </Offcanvas>
 
