@@ -94,7 +94,7 @@ const Header = () => {
                 </Modal.Body>
             </Modal>
 
-            <Zufallsgenerator />
+           {/* <Zufallsgenerator /> wird nicht mehr benötigt */}
         </>
     );
 };
