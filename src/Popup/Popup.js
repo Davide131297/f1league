@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import MerkelGif from './merkel-party.gif';
 
 const Popup = () => {
-    const [showPopup, setShowPopup] = useState(true);
+    const [showPopup, setShowPopup] = useState(false);
 
     useEffect(() => {
         const popupShown = document.cookie.split('; ').find(row => row.startsWith('popupNewFeatures='));
