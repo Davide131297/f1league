@@ -172,11 +172,24 @@ const Profil = () => {
             </SimpleGrid>
 
             {person && person.team && (
-            <div id='teamlogo'>
-                <img src={teamLogos[person.team]} alt={person.team} style={{width: '300px', height: '300px', objectFit: 'contain'}} />
-            </div>
-        )}
-
+                <div id='teamlogo' style={{marginTop: '-20px'}}>
+                    <img 
+                        src={teamLogos[person.team]} 
+                        alt={person.team} 
+                        style={{
+                            width: person.team === 'Ferrari' ? '200px' : (person.team === 'Williams' ? '150px' : '300px'), 
+                            height: person.team === 'Ferrari' ? '150px' : (person.team === 'Williams' ? '150px' : '300px'), 
+                            marginTop: person.team === 'Ferrari' ? '30px' 
+                                : (person.team === 'Williams' ? '30px' 
+                                    : (person.team === 'McLaren' ? '-40px' 
+                                        : (person.team === 'Red Bull' ? '-50px' 
+                                            : (person.team === 'Aston Martin' ? '-40px' 
+                                                : (person.team === 'Mercedes' ? '-35px' : '0px'))))),
+                            objectFit: 'contain'
+                        }} 
+                    />
+                </div>   
+            )}
 
         </React.Fragment>
     );
