@@ -310,7 +310,6 @@ const Konstrukteurtabelle = () => {
                 <Table striped bordered hover>
                     <thead className='thead-sticky'>
                         <tr>
-                            <th>Pos</th>
                             <th>Konstrukteur</th>
                             <th><img src={Bahrain} alt="Bahrain" className='img-size'/></th>
                             <th><img src={SaudiArabien} alt="SaudiArabien" className='img-size'/></th>
@@ -339,9 +338,8 @@ const Konstrukteurtabelle = () => {
                     </thead>
                     <tbody>
                         {
-                            ["Mercedes", "Ferrari", "Red Bull", "McLaren", "Williams", "Aston Martin"].map((team, index) => (
-                                <tr key={index}>
-                                    <td>{index + 1}</td>
+                            ["Mercedes", "Ferrari", "Red Bull", "McLaren", "Williams", "Aston Martin"].map((team) => (
+                                <tr>
                                     <td>{team}</td>
                                     <td>{isNaN(bahrain[team]) ? '' : bahrain[team]}</td>
                                     <td>{isNaN(saudiArabien[team]) ? '' : saudiArabien[team]}</td>
