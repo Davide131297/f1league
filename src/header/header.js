@@ -9,6 +9,10 @@ import Registrierung from "../Registrierung/Registrierung";
 import CloseButton from 'react-bootstrap/CloseButton';
 import { useNavigate } from 'react-router-dom';
 import Zufallsgenerator from "../Zufallsgenerator/Zufallsgenerator";
+import { useDisclosure } from '@mantine/hooks';
+import { Burger } from '@mantine/core';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import { Tabs } from '@mantine/core';
 
 const getCookie = (name) => {
     const value = "; " + document.cookie;
@@ -23,6 +27,8 @@ const Header = () => {
     const handleShow = () => setShow(true);
     const [isAuthenticated, setIsAuthenticated] = useState(getCookie('userID') ? true : false);
     const navigate = useNavigate();
+    const [opened, { toggle }] = useDisclosure();
+
 
     
     const handleLogout = () => {
@@ -34,10 +40,19 @@ const Header = () => {
         }
     };
 
+    const navigateKonstrukteurstabelle = () => {
+        navigate('/f1league/konstrukteure');
+    };
+
+    const navigateFahrertabelle = () => {
+        navigate('/f1league');
+    };
+
     return (
         <>
             <Navbar className="navbar">
                 <Container>
+                    <Burger opened={opened} onClick={toggle} color="white" />
                     <Navbar.Brand className="navbar-brand">
                         <img
                             alt=""
@@ -58,6 +73,23 @@ const Header = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+
+            <Offcanvas show={opened} onHide={toggle} className="offcanvas-custom">
+                <Offcanvas.Header closeButton>
+                <Offcanvas.Title>F1 Liga</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body className="offcanvas-body">
+                <Tabs defaultValue="Fahrertabelle" orientation="vertical">
+                    <Tabs.List>
+                        <Tabs.Tab className="tab-custom" value="Fahrertabelle" onClick={navigateFahrertabelle}>Fahrertabelle</Tabs.Tab>
+                        <Tabs.Tab className="tab-custom" value="Konstrukteurstabelle" onClick={navigateKonstrukteurstabelle}>Konstrukteurstabelle</Tabs.Tab>
+                    </Tabs.List>
+
+                    <Tabs.Panel value="Fahrertabelle" />
+                    <Tabs.Panel value="Konstrukteurstabelle" />
+                    </Tabs>
+                </Offcanvas.Body>
+            </Offcanvas>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
