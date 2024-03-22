@@ -75,10 +75,14 @@ const Header = () => {
                 </Container>
             </Navbar>
 
-            <Offcanvas show={opened} onHide={toggle}className="offcanvas-custom">
+            <Offcanvas show={opened} onHide={toggle} className="offcanvas-custom">
                 <Offcanvas.Body className="offcanvas-body">
                     <div className="tab-custom" onClick={navigateFahrertabelle}>Fahrertabelle</div>
                     <div className="tab-custom" onClick={navigateKonstrukteurstabelle}>Konstrukteurstabelle</div>
+                    <div className="footer">
+                        <div>Int.League V1.0</div>
+                        <div>Releasedatum 22.03.2024</div>
+                    </div>
                 </Offcanvas.Body>
             </Offcanvas>
 

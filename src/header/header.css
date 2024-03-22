@@ -35,6 +35,7 @@
 
 .offcanvas-body {
     margin-top: 10px;
+    position: relative;
 }
 
 .offcanvas-custom {
@@ -61,6 +62,14 @@
 
 .tab-custom:hover {
     background-color: rgb(245, 245, 245);
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    font-size: x-small;
 }
 
 @media screen and (max-width: 600px) {
