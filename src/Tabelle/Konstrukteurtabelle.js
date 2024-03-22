@@ -305,6 +305,22 @@ const Konstrukteurtabelle = () => {
         return values.reduce((sum, value) => sum + (isNaN(value) ? 0 : value), 0);
     }
 
+    const teams = ["Mercedes", "McLaren", "Ferrari", "Aston Martin", "Red Bull", "Williams"];
+    const teamsDemo = ["Aston Martin", "Williams", "Ferrari", "Mercedes", "Red Bull", "McLaren"];
+
+    useEffect(() => {
+        const teamTotals = teamsDemo.map((team) => {
+            const total = safeAdd(bahrain[team], saudiArabien[team], australien[team], aserbaidschan[team], miami[team], italien[team], monaco[team], spanien[team], kanada[team], österreich[team], england[team], ungarn[team], belgien[team], niederlande[team], singapur[team], japan[team], katar[team], usa[team], mexiko[team], brasilien[team], lasVegas[team], abuDhabi[team]);
+            return { team, total };
+        });
+
+        teamTotals.sort((a, b) => b.total - a.total);
+
+        teamTotals.forEach(({ team, total }) => {
+            console.log(`Total for ${team}: ${total}`);
+        });
+    }, [bahrain, saudiArabien, australien, aserbaidschan, miami, italien, monaco, spanien, kanada, österreich, england, ungarn, belgien, niederlande, singapur, japan, katar, usa, mexiko, brasilien, lasVegas, abuDhabi]);
+
     return (
         <div className='table-container'>
             <ScrollArea type='never' className='scrollarea'>
@@ -339,7 +355,7 @@ const Konstrukteurtabelle = () => {
                     </thead>
                     <tbody>
                         {
-                            ["Mercedes", "McLaren", "Ferrari", "Aston Martin", "Red Bull", "Williams"].map((team) => (
+                            teams.map((team) => (
                                 <tr>
                                     <td className='sticky-konstrukteur'>{team}</td>
                                     <td>{isNaN(bahrain[team]) ? '' : bahrain[team]}</td>
