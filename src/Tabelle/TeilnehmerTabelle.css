@@ -52,3 +52,7 @@ th {
     background: white;
     z-index: 20;
 }
+
+.teamname {
+    font-size: 0.9em;
+}

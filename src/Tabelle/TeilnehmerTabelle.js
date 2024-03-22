@@ -27,6 +27,12 @@ import Mexiko from './../Flaggen/mexico.png';
 import Brasilien from './../Flaggen/brasilien.png';
 import AbuDhabi from './../Flaggen/abudhabi.png';
 
+import Ferrari from '../Teamlogos/Ferrari.png';
+import AstonMartin from '../Teamlogos/AstonMartin.png';
+import Merceds from '../Teamlogos/Mercedes.png';
+import RedBull from '../Teamlogos/RedBull.png';
+import Williams from '../Teamlogos/Williams.png';
+import McLaren from '../Teamlogos/Mclaren.png';
 
 
 
@@ -149,6 +155,28 @@ function TeilnehmerTabelle() {
         navigate(`/f1league/profil/${id}`);
     }
 
+    function renderTeamLogo(team) {
+        if (team === 'Ferrari') {
+          return <img src={Ferrari} alt="Ferrari Logo" style={{ width: '15px', height: '20px', marginLeft: '10px' }} />;
+        }
+        if (team === 'Aston Martin') {
+          return <img src={AstonMartin} alt="Aston Martin Logo" style={{ width: '20px', height: '15px', marginLeft: '5px' }} />;
+        }
+        if (team === 'Mercedes') {
+          return <img src={Merceds} alt="Mercedes Logo" style={{ width: '40px', height: '15px', marginLeft: '5px' }} />;
+        }
+        if (team === 'Red Bull') {
+          return <img src={RedBull} alt="Red Bull Logo" style={{ width: '40px', height: '20px', marginLeft: '5px' }} />;
+        }
+        if (team === 'Williams') {
+          return <img src={Williams} alt="Williams Logo" style={{ width: '20px', height: '20px', marginLeft: '5px' }} />;
+        }
+        if (team === 'McLaren') {
+          return <img src={McLaren} alt="McLaren Logo" style={{ width: '40px', height: '20px', marginLeft: '5px' }} />;
+        }
+        return null;
+      }
+
     return (
         <div className='table-container'>
             <ScrollArea type='never' className='scrollarea'>
@@ -188,7 +216,14 @@ function TeilnehmerTabelle() {
                         <tr key={index}>
                             <td>{index + 1}</td> {/* Pos */}
                             <td className='fahrer' onClick={() => handleClick(person.id)}>{person.spielerID}</td> {/* Fahrer */}
-                            <td>{person.team}</td> {/* Konstrukteur */}
+                           
+                            <td>
+                                <div>
+                                    <span className='teamname'>{person.team}</span>
+                                    {renderTeamLogo(person.team)}
+                                </div>
+                            </td> {/* Konstrukteur */}
+
                             <td style={getCellStyle(person.bahrain)}> {/* Bahrain */}
                             <select 
                                 value={person.bahrain === null ? '' : person.bahrain}
