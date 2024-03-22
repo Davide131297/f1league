@@ -77,10 +77,8 @@ const Header = () => {
 
             <Offcanvas show={opened} onHide={toggle}className="offcanvas-custom">
                 <Offcanvas.Body className="offcanvas-body">
-                    <ul>
-                        <li className="tab-custom" onClick={navigateFahrertabelle}>Fahrertabelle</li>
-                        <li className="tab-custom" onClick={navigateKonstrukteurstabelle}>Konstrukteurstabelle</li>
-                    </ul>
+                    <div className="tab-custom" onClick={navigateFahrertabelle}>Fahrertabelle</div>
+                    <div className="tab-custom" onClick={navigateKonstrukteurstabelle}>Konstrukteurstabelle</div>
                 </Offcanvas.Body>
             </Offcanvas>
 

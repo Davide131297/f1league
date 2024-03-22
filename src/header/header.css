@@ -58,6 +58,10 @@
     cursor: pointer;
 }
 
+.tab-custom:hover {
+    background-color: rgb(245, 245, 245);
+}
+
 @media screen and (max-width: 600px) {
     .tab-custom {
         font-size: small;
