@@ -339,7 +339,7 @@ const Konstrukteurtabelle = () => {
                     </thead>
                     <tbody>
                         {
-                            ["Mercedes", "Ferrari", "Red Bull", "McLaren", "Williams", "Aston Martin"].map((team) => (
+                            ["Mercedes", "McLaren", "Ferrari", "Aston Martin", "Red Bull", "Williams"].map((team) => (
                                 <tr>
                                     <td className='sticky-konstrukteur'>{team}</td>
                                     <td>{isNaN(bahrain[team]) ? '' : bahrain[team]}</td>
