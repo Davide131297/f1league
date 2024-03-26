@@ -20,11 +20,11 @@ function Registrierung({ setShow, setIsAuthenticated }) {
     "Ferrari",
     "McLaren",
     "Aston Martin",
-   // "Alpine",
-   // "AlphaTauri",
-   // "Alfa Romeo",
+    "Alpine",
+    "AlphaTauri",
+    "Alfa Romeo",
     "Williams",
-   // "Haas"
+    "Haas"
   ];
 
 
@@ -33,8 +33,8 @@ function Registrierung({ setShow, setIsAuthenticated }) {
     event.preventDefault();
 
     // Überprüfen, ob sowohl SpielerID als auch Passwort und Team eingegeben wurden
-    if (!spielerID || !passwort || !team) {
-      alert('Bitte geben Sie SpielerID, Passwort und Team ein.');
+    if (!spielerID || !passwort) {
+      alert('Bitte gib mindestens eine SpielerID und ein Passwort ein.');
       return;
     }
 
@@ -79,7 +79,7 @@ function Registrierung({ setShow, setIsAuthenticated }) {
   const checkCredentials = async () => {
   // Überprüfen, ob sowohl SpielerID als auch Passwort eingegeben wurden
   if (!spielerID || !passwort) {
-    alert('Bitte geben Sie sowohl SpielerID als auch Passwort ein.');
+    alert('Bitte gib sowohl deine SpielerID als auch Passwort ein.');
     return;
   }
   const hashedPassword = SHA256(passwort).toString();
@@ -114,7 +114,7 @@ function Registrierung({ setShow, setIsAuthenticated }) {
   // Funktion zum Löschen des Fahrers
   const accDelete = async () => {
     if (!spielerID || !passwort) {
-      alert('Bitte geben Sie sowohl SpielerID als auch Passwort ein.');
+      alert('Bitte gib sowohl deine SpielerID als auch Passwort ein.');
       return;
     }
     const hashedPassword = SHA256(passwort).toString();
