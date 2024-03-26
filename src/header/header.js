@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import LigaLogo from './LigaLogo.jpg';
 import './header.css';
-import { Button } from "react-bootstrap";
+import { Button } from '@mantine/core'
 import Modal from 'react-bootstrap/Modal';
 import Registrierung from "../Registrierung/Registrierung";
 import CloseButton from 'react-bootstrap/CloseButton';
@@ -67,9 +67,9 @@ const Header = () => {
                     </Navbar.Brand>
                     <Navbar.Collapse className="justify-content-end">
                         {isAuthenticated === false ? 
-                            <Button onClick={handleShow} variant="light">Login</Button> 
+                            <Button variant="outline" color="rgba(255, 255, 255, 1)" radius="lg" onClick={handleShow}>Login</Button> 
                             : 
-                            <Button onClick={handleLogout} variant="light">Logout</Button>
+                            <Button variant="outline" color="rgba(255, 255, 255, 1)" radius="lg" size="xs" onClick={handleLogout}>Logout</Button>
                         }
                     </Navbar.Collapse>
                 </Container>
