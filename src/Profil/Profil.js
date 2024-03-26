@@ -33,6 +33,7 @@ const Profil = () => {
     const [spielerID, setSpielerID] = useState('');
     const [team, setTeam] = useState('');
     const [reload, setReload] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const teamLogos = {
         'Aston Martin': AstonMartin,
@@ -58,6 +59,13 @@ const Profil = () => {
                 setSpielerID(personData.spielerID);
                 setTeam(personData.team);
                 console.log("Document data:", personData);
+
+                const cookies = document.cookie.split('; ');
+                const userIDCookie = cookies.find(row => row.startsWith('userID'));
+                if (userIDCookie) {
+                    const userID = userIDCookie.split('=')[1];
+                    setIsLoggedIn(userID === personData.id);
+                }
 
                 // Berechnung der Siege
                 let siege = 0;
@@ -135,7 +143,7 @@ const Profil = () => {
                                     <br></br>
                                     {person && <span className="spielerinfos">Siege: {siege}</span>}
                                 </div>
-                                <FaUserEdit size={20} className='userEdit' onClick={open}/>
+                                {isLoggedIn && <FaUserEdit size={20} className='userEdit' onClick={open}/>}
                             </div>
                         </Card.Section>
                     </Card>
