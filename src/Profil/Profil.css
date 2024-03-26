@@ -55,4 +55,15 @@
 
 .userEdit {
     margin-right: 10px;
+    cursor: pointer;
+}
+
+#modalinputs {
+    margin-top: 15px;
+}
+
+#modalButtons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
 }

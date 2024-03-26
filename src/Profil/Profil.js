@@ -8,9 +8,11 @@ import {
 import classes from'./Profil.css';
 import f1helm from './f1helm.jpeg';
 import { db } from '../utils/firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import Profiltabelle from './Profiltabelle';
 import { FaUserEdit } from "react-icons/fa";
+import { useDisclosure } from '@mantine/hooks';
+import { Modal, Input, Button, Divider, Select } from '@mantine/core';
 
 import AlfaRomeo from './../Teamlogos/AlfaRomeo.png';
 import Alpine from './../Teamlogos/Alpine.png';
@@ -27,6 +29,10 @@ const Profil = () => {
     let { id } = useParams();
     const [person, setPerson] = useState(null);
     const [siege, setSiege] = useState(0);
+    const [opened, { open, close }] = useDisclosure(false);
+    const [spielerID, setSpielerID] = useState('');
+    const [team, setTeam] = useState('');
+    const [reload, setReload] = useState(false);
 
     const teamLogos = {
         'Aston Martin': AstonMartin,
@@ -45,6 +51,8 @@ const Profil = () => {
             if (docSnap.exists()) {
                 const personData = docSnap.data();
                 setPerson(personData);
+                setSpielerID(personData.spielerID);
+                setTeam(personData.team);
                 console.log("Document data:", personData);
 
                 // Berechnung der Siege
@@ -63,7 +71,7 @@ const Profil = () => {
             }
         };
         fetchData();
-    }, [id]);
+    }, [id, reload]);
 
     const teamColors = {
         'Ferrari': 'red',
@@ -77,6 +85,26 @@ const Profil = () => {
         'Haas': 'red',
         'Williams': '#049cdc'
     };
+
+    function abbrechen() {
+        console.log("Abbrechen");
+        close();
+    }
+
+    function speichern() {
+        const docRef = doc(db, 'personen', id);
+        const newSpielerID = spielerID !== '' ? spielerID : person.spielerID;
+        const newTeam = team !== '' ? team : person.team;
+        setDoc(docRef, { spielerID: newSpielerID, team: newTeam }, { merge: true })
+            .then(() => {
+                console.log("Änderungen erfolgreich geschrieben!");
+                setReload(!reload);
+                close();
+            })
+            .catch((error) => {
+                console.error("Fehler beim Schreiben des Dokuments: ", error);
+            });
+    }
 
     return (
         <React.Fragment>
@@ -103,7 +131,7 @@ const Profil = () => {
                                     <br></br>
                                     {person && <span className="spielerinfos">Siege: {siege}</span>}
                                 </div>
-                                <FaUserEdit size={20} className='userEdit'/>
+                                <FaUserEdit size={20} className='userEdit' onClick={open}/>
                             </div>
                         </Card.Section>
                     </Card>
@@ -133,6 +161,50 @@ const Profil = () => {
                     />
                 </div>   
             )}
+
+                <Modal
+                    opened={opened}
+                    onClose={close}
+                    withCloseButton={false}
+                    closeOnClickOutside={false}
+                    centered
+                    title={
+                        <h2>
+                            Profildaten bearbeiten
+                        </h2>
+                    }
+                >
+                    <Divider />
+                    <div id='modalinputs'>
+                    <Input.Wrapper label="Spieler-ID ändern">
+                        <Input placeholder="Spieler-ID" value={spielerID} onChange={(e) => setSpielerID(e.target.value)}/>
+                    </Input.Wrapper>
+                    <Select
+                        label="Team ändern"
+                        placeholder="Team auswählen"
+                        value={team}
+                        onChange={(value) => setTeam(value)}
+                        data={[
+                            "Mercedes",
+                            "Red Bull",
+                            "Ferrari",
+                            "McLaren",
+                            "Aston Martin",
+                            "Alpine",
+                            "AlphaTauri",
+                            "Alfa Romeo",
+                            "Williams",
+                            "Haas"
+                        ]}
+                        searchable
+                    />
+                    </div>
+
+                    <div id='modalButtons'>
+                        <Button variant="filled" color="red" onClick={abbrechen}>Abbrechen</Button>
+                        <Button variant="filled" color="rgba(0, 153, 10, 1)" style={{marginLeft: '10px'}} onClick={speichern}>Speichern</Button>
+                    </div>
+                </Modal>
 
         </React.Fragment>
     );
