@@ -10,6 +10,7 @@ import f1helm from './f1helm.jpeg';
 import { db } from '../utils/firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import Profiltabelle from './Profiltabelle';
+import { FaUserEdit } from "react-icons/fa";
 
 import AlfaRomeo from './../Teamlogos/AlfaRomeo.png';
 import Alpine from './../Teamlogos/Alpine.png';
@@ -92,14 +93,17 @@ const Profil = () => {
                         </Card.Section>
 
                         <Card.Section>
-                            <div className='profildaten'>
-                                {person && <span id="spielername" style={{color: teamColors[person.team]}}>{person.spielerID}</span>}
-                                <br></br>
-                                {person && <span className="spielerinfos">Team: {person.team}</span>}
-                                <br></br>
-                                {person && <span className="spielerinfos">Punkte: {person.gesamtPunkte}</span>}
-                                <br></br>
-                                {person && <span className="spielerinfos">Siege: {siege}</span>}
+                            <div className='profildaten' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                                <div>
+                                    {person && <span id="spielername" style={{color: teamColors[person.team]}}>{person.spielerID}</span>}
+                                    <br></br>
+                                    {person && <span className="spielerinfos">Team: {person.team}</span>}
+                                    <br></br>
+                                    {person && <span className="spielerinfos">Punkte: {person.gesamtPunkte}</span>}
+                                    <br></br>
+                                    {person && <span className="spielerinfos">Siege: {siege}</span>}
+                                </div>
+                                <FaUserEdit size={20} className='userEdit'/>
                             </div>
                         </Card.Section>
                     </Card>
