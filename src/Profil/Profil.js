@@ -41,6 +41,10 @@ const Profil = () => {
         'Mercedes': Mercedes,
         'Red Bull': RedBull,
         'Williams': Williams,
+        'Alpine': Alpine,
+        'AlphaTauri': AlphaTauri,
+        'Alfa Romeo': AlfaRomeo,
+        'Haas': Haas
     };
 
     //Auslesen der Daten aus der Datenbank
@@ -148,18 +152,27 @@ const Profil = () => {
                         src={teamLogos[person.team]} 
                         alt={person.team} 
                         style={{
-                            width: person.team === 'Ferrari' ? '200px' : (person.team === 'Williams' ? '150px' : '300px'), 
+                            width: person.team === 'Ferrari' ? '200px' : 
+                            (person.team === 'Williams' ? '150px' : 
+                            (person.team === 'Alpine' ? '150px' : 
+                            (person.team === 'AlfaRomeo' ? '150px' : 
+                            (person.team === 'Haas' ? '150px' : 
+                            (person.team === 'AlphaTauri' ? '150px' : '300px'))))),
                             height: person.team === 'Ferrari' ? '150px' : (person.team === 'Williams' ? '150px' : '300px'), 
-                            marginTop: person.team === 'Ferrari' ? '30px' 
+                            marginTop: person.team === 'Ferrari' ? '40px' 
                                 : (person.team === 'Williams' ? '30px' 
                                     : (person.team === 'McLaren' ? '-40px' 
                                         : (person.team === 'Red Bull' ? '-50px' 
                                             : (person.team === 'Aston Martin' ? '-40px' 
-                                                : (person.team === 'Mercedes' ? '-35px' : '0px'))))),
+                                                : (person.team === 'Mercedes' ? '-35px'
+                                                : (person.team === 'Alpine' ? '-30px'
+                                                : (person.team === 'AlphaTauri' ? '-30px'
+                                                : (person.team === 'Haas' ? '-30px'
+                                                : (person.team === 'Alfa Romeo' ? '-30px' : '0px'))))))))),
                             objectFit: 'contain'
                         }} 
                     />
-                </div>   
+                </div> 
             )}
 
                 <Modal
