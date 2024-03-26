@@ -29,10 +29,10 @@ import AbuDhabi from './../Flaggen/abudhabi.png';
 
 import Ferrari from '../Teamlogos/Ferrari.png';
 import AstonMartin from '../Teamlogos/AstonMartin.png';
-import Merceds from '../Teamlogos/Mercedes.png';
-import RedBull from '../Teamlogos/RedBull.png';
+import Merceds from '../Teamlogos/MercedesIcon.png';
+import RedBull from '../Teamlogos/RedBullIcon.svg';
 import Williams from '../Teamlogos/Williams.png';
-import McLaren from '../Teamlogos/Mclaren.png';
+import McLaren from '../Teamlogos/MclarenIcon.png';
 
 
 
@@ -160,19 +160,19 @@ function TeilnehmerTabelle() {
           return <img src={Ferrari} alt="Ferrari Logo" style={{ width: '15px', height: '20px', marginLeft: '10px' }} />;
         }
         if (team === 'Aston Martin') {
-          return <img src={AstonMartin} alt="Aston Martin Logo" style={{ width: '20px', height: '15px', marginLeft: '5px' }} />;
+          return <img src={AstonMartin} alt="Aston Martin Logo" style={{ width: '15px', height: '15px', marginLeft: '5px' }} />;
         }
         if (team === 'Mercedes') {
-          return <img src={Merceds} alt="Mercedes Logo" style={{ width: '40px', height: '15px', marginLeft: '5px' }} />;
+          return <img src={Merceds} alt="Mercedes Logo" style={{ width: '20px', height: '20px', marginLeft: '5px' }} />;
         }
         if (team === 'Red Bull') {
-          return <img src={RedBull} alt="Red Bull Logo" style={{ width: '40px', height: '20px', marginLeft: '5px' }} />;
+          return <img src={RedBull} alt="Red Bull Logo" style={{ width: '20px', height: '20px', marginLeft: '10px' }} />;
         }
         if (team === 'Williams') {
-          return <img src={Williams} alt="Williams Logo" style={{ width: '20px', height: '20px', marginLeft: '5px' }} />;
+          return <img src={Williams} alt="Williams Logo" style={{ width: '20px', height: '20px', marginLeft: '10px' }} />;
         }
         if (team === 'McLaren') {
-          return <img src={McLaren} alt="McLaren Logo" style={{ width: '40px', height: '20px', marginLeft: '5px' }} />;
+          return <img src={McLaren} alt="McLaren Logo" style={{ width: '25px', height: '25px', marginLeft: '8px' }} />;
         }
         return null;
       }
