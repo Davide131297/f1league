@@ -69,7 +69,7 @@ const Header = () => {
                         {isAuthenticated === false ? 
                             <Button variant="outline" color="rgba(255, 255, 255, 1)" radius="lg" onClick={handleShow}>Login</Button> 
                             : 
-                            <Button variant="outline" color="rgba(255, 255, 255, 1)" radius="lg" size="xs" onClick={handleLogout}>Logout</Button>
+                            <Button variant="outline" color="rgba(255, 255, 255, 1)" radius="lg" size={window.innerWidth <= 768 ? "xs" : "md"} onClick={handleLogout}>Logout</Button>
                         }
                     </Navbar.Collapse>
                 </Container>
