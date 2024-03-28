@@ -46,9 +46,11 @@ function TeilnehmerTabelle() {
         const unsubscribe = onSnapshot(personenRef, (snapshot) => {
             let tempListe = [];
             snapshot.forEach((doc) => {
+                let data = doc.data();
                 tempListe.push({ 
                     id: doc.id, 
-                    ...doc.data() // Hier werden alle Attribute des Dokuments abgerufen
+                    gesamtPunkte: data.gesamtPunkte ? data.gesamtPunkte : 0, // Fallback-Wert hinzufügen
+                    ...data // Hier werden alle Attribute des Dokuments abgerufen
                 });
             });
             tempListe.sort((a, b) => b.gesamtPunkte - a.gesamtPunkte);
