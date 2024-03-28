@@ -14,7 +14,7 @@ import { FaUserEdit } from "react-icons/fa";
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Input, Button, Divider, Select } from '@mantine/core';
 
-import AlfaRomeo from './../Teamlogos/AlfaRomeo.png';
+import AlfaRomeo from './../Teamlogos/AlfaRomeoIcon.png';
 import Alpine from './../Teamlogos/Alpine.png';
 import AstonMartin from './../Teamlogos/AstonMartin.png';
 import Ferrari from './../Teamlogos/Ferrari.png';
@@ -165,7 +165,8 @@ const Profil = () => {
                             (person.team === 'Alpine' ? '150px' : 
                             (person.team === 'AlfaRomeo' ? '150px' : 
                             (person.team === 'Haas' ? '150px' : 
-                            (person.team === 'AlphaTauri' ? '150px' : '300px'))))),
+                            (person.team === 'AlphaTauri' ? '150px' :
+                            (person.team === 'Alfa Romeo' ? '150px' : '300px')))))),
                             height: person.team === 'Ferrari' ? '150px' : (person.team === 'Williams' ? '150px' : '300px'), 
                             marginTop: person.team === 'Ferrari' ? '40px' 
                                 : (person.team === 'Williams' ? '30px' 
