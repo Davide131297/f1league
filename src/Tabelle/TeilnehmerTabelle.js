@@ -33,7 +33,8 @@ import Merceds from '../Teamlogos/MercedesIcon.png';
 import RedBull from '../Teamlogos/RedBullIcon.svg';
 import Williams from '../Teamlogos/Williams.png';
 import McLaren from '../Teamlogos/MclarenIcon.png';
-
+import Alpine from '../Teamlogos/Alpine.png';
+import AlfaRomeo from '../Teamlogos/AlfaRomeoIcon.png';
 
 
 function TeilnehmerTabelle() {
@@ -175,6 +176,12 @@ function TeilnehmerTabelle() {
         }
         if (team === 'McLaren') {
           return <img src={McLaren} alt="McLaren Logo" style={{ width: '25px', height: '25px', marginLeft: '8px' }} />;
+        }
+        if (team === 'Alpine') {
+          return <img src={Alpine} alt="Alpine Logo" style={{ width: '20px', height: '20px', marginLeft: '8px' }} />;
+        }
+        if (team === 'Alfa Romeo') {
+          return <img src={AlfaRomeo} alt="AlfaRomeo Logo" style={{ width: '20px', height: '20px', marginLeft: '8px' }} />;
         }
         return null;
       }
