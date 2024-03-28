@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/f1league/static/css/main.60bc5753.css",
-    "main.js": "/f1league/static/js/main.2370e61d.js",
+    "main.js": "/f1league/static/js/main.fabd96bf.js",
     "static/js/453.916ec20e.chunk.js": "/f1league/static/js/453.916ec20e.chunk.js",
     "static/media/merkel-party.gif": "/f1league/static/media/merkel-party.98ee41efd5814c3c04a7.gif",
+    "static/media/AlfaRomeoIcon.png": "/f1league/static/media/AlfaRomeoIcon.ab5ba7b17d98f449b9cd.png",
     "static/media/MercedesIcon.png": "/f1league/static/media/MercedesIcon.a64647a94ea571bce85c.png",
     "static/media/LigaLogo.jpg": "/f1league/static/media/LigaLogo.49e788c274b2fe2cdee7.jpg",
     "static/media/f1helm.jpeg": "/f1league/static/media/f1helm.a01517fcdf4854b3fb34.jpeg",
     "static/media/AstonMartin.png": "/f1league/static/media/AstonMartin.03aa4998ed8b40b30460.png",
-    "static/media/AlfaRomeo.png": "/f1league/static/media/AlfaRomeo.e12285393120a9d8f3b8.png",
     "static/media/Williams.png": "/f1league/static/media/Williams.da49b673e735d418bc85.png",
     "static/media/AlphaTauri.png": "/f1league/static/media/AlphaTauri.d45fdb4919fd14623b32.png",
     "static/media/Mercedes.png": "/f1league/static/media/Mercedes.46d37305740736d7512c.png",
@@ -19,11 +19,11 @@
     "static/media/Alpine.png": "/f1league/static/media/Alpine.8f9d89dccf3c302e4023.png",
     "index.html": "/f1league/index.html",
     "main.60bc5753.css.map": "/f1league/static/css/main.60bc5753.css.map",
-    "main.2370e61d.js.map": "/f1league/static/js/main.2370e61d.js.map",
+    "main.fabd96bf.js.map": "/f1league/static/js/main.fabd96bf.js.map",
     "453.916ec20e.chunk.js.map": "/f1league/static/js/453.916ec20e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.60bc5753.css",
-    "static/js/main.2370e61d.js"
+    "static/js/main.fabd96bf.js"
   ]
 }
